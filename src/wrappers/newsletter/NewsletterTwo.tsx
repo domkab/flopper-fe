@@ -2,7 +2,14 @@ import PropTypes from "prop-types";
 import clsx from "clsx";
 import SubscribeEmailTwo from "../../components/newsletter/SubscribeEmailTwo";
 
-const NewsletterTwo = ({
+
+interface NewsletterTwoProps {
+  spaceTopClass?: string;
+  spaceBottomClass: string;
+  subscribeBtnClass?: string;
+ }
+
+const NewsletterTwo: React.FC<NewsletterTwoProps> = ({
   spaceTopClass,
   spaceBottomClass,
   subscribeBtnClass
@@ -27,11 +34,6 @@ const NewsletterTwo = ({
       </div>
     </div>
   );
-};
-
-NewsletterTwo.propTypes = {
-  spaceBottomClass: PropTypes.string,
-  spaceTopClass: PropTypes.string
 };
 
 export default NewsletterTwo;

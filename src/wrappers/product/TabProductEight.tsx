@@ -4,9 +4,9 @@ import Nav from "react-bootstrap/Nav";
 import ProductGrid from "./ProductGrid";
 
 interface TabProductEightProps {
- spaceTopClass: string;
- spaceBottomClass: string;
- bgColorClass: string;
+ spaceTopClass?: string;
+ spaceBottomClass?: string;
+ bgColorClass?: string;
  category: string;
 }
 
