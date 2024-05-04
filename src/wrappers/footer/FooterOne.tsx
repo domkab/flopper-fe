@@ -57,20 +57,20 @@ const FooterOne: React.FC<FooterOneProps> = ({
               <div className="footer-list">
                 <ul>
                   <li>
-                    <Link to={import.meta.env.BASE_URL + "/about"}>About us</Link>
+                    <Link to={import.meta.env.VITE_PUBLIC_URL + "/about"}>About us</Link>
                   </li>
                   <li>
-                    <Link to={import.meta.env.BASE_URL + "#/"}>
+                    <Link to={import.meta.env.VITE_PUBLIC_URL + "#/"}>
                       Store location
                     </Link>
                   </li>
                   <li>
-                    <Link to={import.meta.env.BASE_URL + "/contact"}>
+                    <Link to={import.meta.env.VITE_PUBLIC_URL + "/contact"}>
                       Contact
                     </Link>
                   </li>
                   <li>
-                    <Link to={import.meta.env.BASE_URL + "#/"}>
+                    <Link to={import.meta.env.VITE_PUBLIC_URL+ "#/"}>
                       Orders tracking
                     </Link>
                   </li>
@@ -94,18 +94,18 @@ const FooterOne: React.FC<FooterOneProps> = ({
               <div className="footer-list">
                 <ul>
                   <li>
-                    <Link to={import.meta.env.BASE_URL + "#/"}>Returns</Link>
+                    <Link to={import.meta.env.VITE_PUBLIC_URL+ "#/"}>Returns</Link>
                   </li>
                   <li>
-                    <Link to={import.meta.env.BASE_URL + "#/"}>
+                    <Link to={import.meta.env.VITE_PUBLIC_URL+ "#/"}>
                       Support Policy
                     </Link>
                   </li>
                   <li>
-                    <Link to={import.meta.env.BASE_URL + "#/"}>Size guide</Link>
+                    <Link to={import.meta.env.VITE_PUBLIC_URL+ "#/"}>Size guide</Link>
                   </li>
                   <li>
-                    <Link to={import.meta.env.BASE_URL + "#/"}>FAQs</Link>
+                    <Link to={import.meta.env.VITE_PUBLIC_URL+ "#/"}>FAQs</Link>
                   </li>
                 </ul>
               </div>
@@ -174,7 +174,7 @@ const FooterOne: React.FC<FooterOneProps> = ({
             <FooterNewsletter
               spaceBottomClass="mb-30"
               spaceLeftClass="ml-70"
-              sideMenu={sideMenu}
+              sideMenu={sideMenu ?? false}
             />
           </div>
         </div>

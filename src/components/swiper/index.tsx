@@ -1,7 +1,11 @@
 import { forwardRef } from "react";
 import cn from "clsx";
-import { Navigation, Pagination, Autoplay, A11y } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Pagination, Autoplay, A11y } from "swiper";
+
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
 
 interface SwiperSliderProps {
   options?: any;

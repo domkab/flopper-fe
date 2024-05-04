@@ -1,30 +1,30 @@
-import EffectFade from 'swiper';
-import Swiper, { SwiperSlide } from "../components/swiper"
-import heroSliderData from "../../src/data/hero-sliders/hero-slider-fourteen.json";
-import HeroSliderFourteenSingle from "../components/hero-slider/heroSliderFourteenSingle";
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { EffectFade, Navigation, Pagination, Autoplay } from 'swiper';
+import 'swiper/css';
+import 'swiper/css/effect-fade';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
 
-const params = {
-  effect: "fade",
-  fadeEffect: {
-    crossFade: true
-  },
-  modules: [EffectFade],
-  loop: true,
-  speed: 1000,
-  navigation: true,
-  autoHeight: false
-};
+import heroSliderData from '../../src/data/hero-slider-fourteen.json';
+import HeroSliderFourteenSingle from '../components/hero-slider/heroSliderFourteenSingle';
 
-const HeroSliderFourteen = () => {
+const HeroSliderFourteen: React.FC = () => {
   return (
     <div className="slider-area">
       <div className="slider-active-2 nav-style-3">
-        <Swiper options={params} className="overflow-hidden">
+        <Swiper
+          effect="fade"
+          fadeEffect={{ crossFade: true }}
+          loop={true}
+          speed={1000}
+          navigation={true}
+          autoHeight={false}
+          modules={[EffectFade, Navigation, Pagination, Autoplay]}
+          className="overflow-hidden"
+        >
           {heroSliderData?.map((single, key) => (
             <SwiperSlide key={key}>
-              <HeroSliderFourteenSingle
-                data={single}
-              />
+              <HeroSliderFourteenSingle data={single} />
             </SwiperSlide>
           ))}
         </Swiper>

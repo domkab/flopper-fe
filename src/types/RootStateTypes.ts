@@ -67,6 +67,7 @@ export interface ProductState {
 export interface CurrencyState {
   current: Currency;
   currencySymbol: string;
+  currencyName: string;
 }
 
 export interface CartState {

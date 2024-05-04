@@ -1,4 +1,3 @@
-import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
 interface ImageData {
@@ -14,8 +13,8 @@ interface ImageSliderOneSingleProps {
 const ImageSliderOneSingle: React.FC<ImageSliderOneSingleProps> = ({ data }) => {
   return (
     <div className="single-image">
-      <Link to={import.meta.env.BASE_URL + data.link}>
-        <img src={import.meta.env.BASE_URL + data.image} alt="" />
+      <Link to={import.meta.env.VITE_PUBLIC_URL + data.link}>
+        <img src={import.meta.env.VITE_PUBLIC_URL + data.image} alt="" />
       </Link>
     </div>
   );

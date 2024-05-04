@@ -15,8 +15,8 @@ const FooterCopyright: React.FC<FooterCopyrightProps> = ({
   return (
     <div className={clsx("copyright", spaceBottomClass, colorClass)}>
       <div className="footer-logo">
-        <Link to={import.meta.env.BASE_URL + "/"}>
-          <img alt="" src={import.meta.env.BASE_URL + footerLogo} />
+        <Link to={import.meta.env.VITE_PUBLIC_URL + "/"}>
+          <img alt="" src={import.meta.env.VITE_PUBLIC_URL + footerLogo} />
         </Link>
       </div>
       <p>

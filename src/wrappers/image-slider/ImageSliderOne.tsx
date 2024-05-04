@@ -1,6 +1,6 @@
 import Swiper, { SwiperSlide } from "../../components/swiper";
 import ImageSliderOneSingle from "../../components/image-slider/ImageSliderOneSingle";
-import imageData from "../../data/image-slider-one.json";
+import imageData from "../../data/image-slider/image-slider-one.json";
 
 const settings = {
   loop: false,

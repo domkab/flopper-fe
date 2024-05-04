@@ -3,7 +3,10 @@ import { Suspense, lazy } from "react";
 import ScrollToTop from "./helpers/scroll-top";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
+console.log('Environment VITE_PUBLIC_URL:', import.meta.env.VITE_PUBLIC_URL);
+
 const HomeFashionSix = lazy(() => import("./pages/HomeFashionSix"));
+const ShopGridStandard = lazy(() => import("./pages/shop/ShopGridStandart"));
 
 const App: React.FC = () => {
   return (
@@ -20,11 +23,16 @@ const App: React.FC = () => {
           }
         >
           {/* Routes and other components will be rendered here */}
-
-          <Route
-            path={import.meta.env.BASE_URL + "/home-fashion-six"}
-            element={<HomeFashionSix />}
-          />
+          <Routes>
+            <Route
+              path={import.meta.env.VITE_PUBLIC_URL}
+              element={<HomeFashionSix />}
+            />
+            <Route
+              path={import.meta.env.VITE_PUBLIC_URL + "/shop-grid-standard"}
+              element={<ShopGridStandard />}
+            />
+          </Routes>
         </Suspense>
       </ScrollToTop>
     </Router>

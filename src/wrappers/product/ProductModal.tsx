@@ -8,7 +8,7 @@ import { getProductCartQuantity } from "../../helpers/product";
 import { addToCart } from "../../store/slices/cart-slice";
 import { addToWishlist } from "../../store/slices/wishlist-slice";
 import { addToCompare } from "../../store/slices/compare-slice";
-import { EffectFade, Thumbs } from 'swiper/modules';
+import { EffectFade, Thumbs } from 'swiper';
 import { CompareItem, Currency, Product, RootState, WishlistItem } from '../../types/RootStateTypes';
 
 interface ProductModalProps {

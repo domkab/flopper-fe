@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "typeRoots": ["./node_modules/@types", "./types"],
     "target": "esnext",
     "module": "esnext",
     "lib": ["dom", "dom.iterable", "esnext"],
@@ -16,6 +17,7 @@
   },
   "include": [
     "src/**/*",
-    "env.d.ts"
+    "env.d.ts",
+    "./types/**/*"
   ]
 }
