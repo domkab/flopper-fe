@@ -30,13 +30,6 @@ export interface Product {
   selectedProductSize?: string;
 }
 
-export interface Currency {
-  code: string;
-  symbol: string;
-  currencyRate: number;
-  currencySymbol: string;
-}
-
 export interface CartItem {
   id: string;
   discount: number;
@@ -62,6 +55,13 @@ export interface CompareState {
 
 export interface ProductState {
   products: Product[];
+}
+
+export interface Currency {
+  code: string;
+  symbol: string;
+  currencyRate: number;
+  currencySymbol: string;
 }
 
 export interface CurrencyState {

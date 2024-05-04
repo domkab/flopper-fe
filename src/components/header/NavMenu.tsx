@@ -5,7 +5,7 @@ import clsx from "clsx";
 
 interface NavMenuProps {
   menuWhiteClass?: string,
-  sidebarMenu: boolean,
+  sidebarMenu?: boolean,
 }
 
 const NavMenu: React.FC<NavMenuProps> = ({ menuWhiteClass, sidebarMenu }) => {

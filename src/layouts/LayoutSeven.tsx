@@ -1,5 +1,5 @@
 import { Fragment } from "react";
-import HeaderSix from "../wrappers/header/headerSix";
+import HeaderSix from "../wrappers/header/HeaderSix";
 import FooterOne from "../wrappers/footer/FooterOne";
 import ScrollToTop from "../components/scroll-to-top"
 

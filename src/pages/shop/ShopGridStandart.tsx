@@ -1,50 +1,50 @@
 import { Fragment, useState, useEffect } from 'react';
 import Paginator from 'react-hooks-paginator';
 import { useSelector } from "react-redux";
-import { useLocation } from "react-router-dom"
+import { useLocation } from "react-router-dom";
 import { getSortedProducts } from '../../helpers/product';
 import SEO from "../../components/seo";
 import LayoutOne from '../../layouts/LayoutOne';
 import Breadcrumb from '../../wrappers/breadcrumb/Breadcrumb';
 import ShopSidebar from '../../wrappers/product/ShopSidebar';
-import ShopTopbar from '../../wrappers/product/ShopTopbar';
+import ShopTopbar from '../../wrappers/product/ShopTopBar';
 import ShopProducts from '../../wrappers/product/ShopProducts';
+import { RootState, Product } from "../../types/RootStateTypes";
 
 const ShopGridStandard = () => {
-  const [layout, setLayout] = useState('grid three-column');
-  const [sortType, setSortType] = useState('');
-  const [sortValue, setSortValue] = useState('');
-  const [filterSortType, setFilterSortType] = useState('');
-  const [filterSortValue, setFilterSortValue] = useState('');
-  const [offset, setOffset] = useState(0);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [currentData, setCurrentData] = useState([]);
-  const [sortedProducts, setSortedProducts] = useState([]);
-  const { products } = useSelector((state) => state.product);
+  const [layout, setLayout] = useState<string>('grid three-column');
+  const [sortType, setSortType] = useState<string>('');
+  const [sortValue, setSortValue] = useState<string>('');
+  const [filterSortType, setFilterSortType] = useState<string>('');
+  const [filterSortValue, setFilterSortValue] = useState<string>('');
+  const [offset, setOffset] = useState<number>(0);
+  const [currentPage, setCurrentPage] = useState<number>(1);
+  const [currentData, setCurrentData] = useState<Product[]>([]);
+  const [sortedProducts, setSortedProducts] = useState<Product[]>([]);
+  const { products } = useSelector((state: RootState) => state.product);
 
   const pageLimit = 15;
-  let { pathname } = useLocation();
+  const { pathname } = useLocation();
 
-  const getLayout = (layout) => {
-    setLayout(layout)
-  }
+  const getLayout = (layout: string) => {
+    setLayout(layout);
+  };
 
-  const getSortParams = (sortType, sortValue) => {
+  const getSortParams = (sortType: string, sortValue: string) => {
     setSortType(sortType);
     setSortValue(sortValue);
-  }
+  };
 
-  const getFilterSortParams = (sortType, sortValue) => {
+  const getFilterSortParams = (sortType: string, sortValue: string) => {
     setFilterSortType(sortType);
     setFilterSortValue(sortValue);
-  }
+  };
 
   useEffect(() => {
-    let sortedProducts = getSortedProducts(products, sortType, sortValue);
+    const sortedProducts = getSortedProducts(products, sortType, sortValue);
     const filterSortedProducts = getSortedProducts(sortedProducts, filterSortType, filterSortValue);
-    sortedProducts = filterSortedProducts;
-    setSortedProducts(sortedProducts);
-    setCurrentData(sortedProducts.slice(offset, offset + pageLimit));
+    setSortedProducts(filterSortedProducts);
+    setCurrentData(filterSortedProducts.slice(offset, offset + pageLimit));
   }, [offset, products, sortType, sortValue, filterSortType, filterSortValue]);
 
   return (
@@ -58,8 +58,8 @@ const ShopGridStandard = () => {
         {/* breadcrumb */}
         <Breadcrumb
           pages={[
-            { label: "Home", path: process.env.PUBLIC_URL + "/" },
-            { label: "Shop", path: process.env.PUBLIC_URL + pathname }
+            { label: "Home", path: import.meta.env.VITE_PUBLIC_URL + "/" },
+            { label: "Shop", path: import.meta.env.VITE_PUBLIC_URL + pathname }
           ]}
         />
 
@@ -97,8 +97,7 @@ const ShopGridStandard = () => {
         </div>
       </LayoutOne>
     </Fragment>
-  )
+  );
 }
-
 
 export default ShopGridStandard;

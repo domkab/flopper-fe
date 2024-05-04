@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { Modal } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import Rating from "./sub-components/ProductRating";
-import Swiper, { SwiperSlide } from "../../components/swiper";
+import Swiper, { SwiperSlide } from "../swiper";
 import { getProductCartQuantity } from "../../helpers/product";
 import { addToCart } from "../../store/slices/cart-slice";
 import { addToWishlist } from "../../store/slices/wishlist-slice";
@@ -16,7 +16,7 @@ interface ProductModalProps {
   currency: Currency;
   discountedPrice: number | null;
   finalProductPrice: number;
-  finalDiscountedPrice: number;
+  finalDiscountedPrice: number | null;
   show: boolean;
   onHide: () => void;
   wishlistItem?: WishlistItem;
