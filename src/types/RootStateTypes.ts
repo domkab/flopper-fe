@@ -67,6 +67,7 @@ export interface Currency {
 export interface CurrencyState {
   current: Currency;
   currencySymbol: string;
+  currencyRate: number;
   currencyName: string;
 }
 

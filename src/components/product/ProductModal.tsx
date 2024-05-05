@@ -1,5 +1,4 @@
 import { Fragment, useState } from "react";
-import PropTypes from "prop-types";
 import { Modal } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import Rating from "./sub-components/ProductRating";

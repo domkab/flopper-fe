@@ -30,9 +30,9 @@ const ProductGridListSingle: React.FC<ProductGridListSingleProps> = ({
 }) => {
   const [modalShow, setModalShow] = useState(false);
   const discountedPrice = getDiscountPrice(product.price, product.discount);
-  const finalProductPrice = +(product.price * currency.currencyRate).toFixed(2);
+  const finalProductPrice = +(product.price * (currency?.currencyRate ?? 1)).toFixed(2);
   const finalDiscountedPrice = discountedPrice
-    ? +(discountedPrice * currency.currencyRate).toFixed(2)
+    ? +(discountedPrice * (currency?.currencyRate ?? 1)).toFixed(2)
     : null;
   const dispatch = useDispatch();
 
@@ -144,7 +144,7 @@ const ProductGridListSingle: React.FC<ProductGridListSingleProps> = ({
             ""
           )}
           <div className="product-price">
-            {discountedPrice !== null ? (
+            {finalDiscountedPrice !== null ? (
               <Fragment>
                 <span>{currency.currencySymbol + finalDiscountedPrice}</span>{" "}
                 <span className="old">
@@ -201,11 +201,9 @@ const ProductGridListSingle: React.FC<ProductGridListSingleProps> = ({
                 </Link>
               </h3>
               <div className="product-list-price">
-                {discountedPrice !== null ? (
+                {finalDiscountedPrice !== null ? (
                   <Fragment>
-                    <span>
-                      {currency.currencySymbol + finalDiscountedPrice}
-                    </span>{" "}
+                    <span>{currency.currencySymbol + finalDiscountedPrice}</span>{" "}
                     <span className="old">
                       {currency.currencySymbol + finalProductPrice}
                     </span>
@@ -315,11 +313,11 @@ const ProductGridListSingle: React.FC<ProductGridListSingleProps> = ({
         onHide={() => setModalShow(false)}
         product={product}
         currency={currency}
-        discountedPrice={discountedPrice}
+        discountedPrice={finalDiscountedPrice}
         finalProductPrice={finalProductPrice}
-        finalDiscountedPrice={finalDiscountedPrice}
         wishlistItem={wishlistItem}
         compareItem={compareItem}
+        finalDiscountedPrice={finalDiscountedPrice}
       />
     </Fragment>
   );

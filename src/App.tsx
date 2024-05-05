@@ -7,6 +7,9 @@ console.log('Environment VITE_PUBLIC_URL:', import.meta.env.VITE_PUBLIC_URL);
 
 const HomeFashionSix = lazy(() => import("./pages/HomeFashionSix"));
 const ShopGridStandard = lazy(() => import("./pages/shop/ShopGridStandart"));
+const ProductTabLeft = lazy(() =>
+  import("./pages/shop-product/ProductTabLeft")
+);
 
 const App: React.FC = () => {
   return (
@@ -31,6 +34,10 @@ const App: React.FC = () => {
             <Route
               path={import.meta.env.VITE_PUBLIC_URL + "/shop-grid-standard"}
               element={<ShopGridStandard />}
+            />
+            <Route
+              path={import.meta.env.VITE_PUBLIC_URL + "/product-tab-left/:id"}
+              element={<ProductTabLeft />}
             />
           </Routes>
         </Suspense>

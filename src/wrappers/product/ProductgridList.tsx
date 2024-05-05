@@ -1,8 +1,7 @@
-import PropTypes from "prop-types";
 import { Fragment } from "react";
 import { useSelector } from "react-redux";
 import ProductGridListSingle from "../../components/product/ProductGridListSingle";
-import { RootState, Product, CartItem, WishlistItem, CompareItem } from "../../types/RootStateTypes";
+import { RootState, Product, CartItem, WishlistItem, CompareItem, Currency } from "../../types/RootStateTypes";
 
 interface ProductGridListProps {
   products: Product[];
@@ -13,7 +12,17 @@ const ProductGridList: React.FC<ProductGridListProps> = ({
   products,
   spaceBottomClass,
 }) => {
-  const currency = useSelector((state: RootState) => state.currency.current);
+  // Correctly extract the currency state
+  const currencyState = useSelector((state: RootState) => state.currency);
+
+  // Construct a Currency object
+  const currency: Currency = {
+    code: currencyState.currencyName,
+    symbol: currencyState.currencySymbol,
+    currencyRate: currencyState.currencyRate,
+    currencySymbol: currencyState.currencySymbol
+  };
+
   const cartItems = useSelector((state: RootState) => state.cart.cartItems);
   const wishlistItems = useSelector((state: RootState) => state.wishlist.wishlistItems);
   const compareItems = useSelector((state: RootState) => state.compare.compareItems);
@@ -46,29 +55,5 @@ const ProductGridList: React.FC<ProductGridListProps> = ({
     </Fragment>
   );
 };
-
-// ProductGridList.propTypes = {
-//   products: PropTypes.arrayOf(PropTypes.shape({
-//     id: PropTypes.string.isRequired,
-//     name: PropTypes.string.isRequired,
-//     price: PropTypes.number.isRequired,
-//     discount: PropTypes.number,
-//     new: PropTypes.bool,
-//     category: PropTypes.arrayOf(PropTypes.string).isRequired,
-//     tag: PropTypes.arrayOf(PropTypes.string),
-//     variation: PropTypes.arrayOf(PropTypes.shape({
-//       color: PropTypes.string.isRequired,
-//       images: PropTypes.arrayOf(PropTypes.string).isRequired,
-//       size: PropTypes.arrayOf(PropTypes.shape({
-//         name: PropTypes.string.isRequired,
-//         stock: PropTypes.number.isRequired,
-//       })).isRequired,
-//     })),
-//     image: PropTypes.arrayOf(PropTypes.string).isRequired,
-//     shortDescription: PropTypes.string.isRequired,
-//     fullDescription: PropTypes.string.isRequired,
-//   })).isRequired,
-//   spaceBottomClass: PropTypes.string,
-// };
 
 export default ProductGridList;
