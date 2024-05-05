@@ -1,4 +1,3 @@
-import PropTypes from "prop-types";
 import React, { Fragment, useState } from "react";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";

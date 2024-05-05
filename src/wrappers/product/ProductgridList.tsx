@@ -12,10 +12,7 @@ const ProductGridList: React.FC<ProductGridListProps> = ({
   products,
   spaceBottomClass,
 }) => {
-  // Correctly extract the currency state
   const currencyState = useSelector((state: RootState) => state.currency);
-
-  // Construct a Currency object
   const currency: Currency = {
     code: currencyState.currencyName,
     symbol: currencyState.currencySymbol,

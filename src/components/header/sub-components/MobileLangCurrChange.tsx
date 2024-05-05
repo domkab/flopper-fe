@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector, useDispatch } from "react-redux";
 import { useTranslation } from "react-i18next";
-import { setCurrency } from "../../../store/slices/currency-slice"
+import { setCurrency } from "../../../store/slices/currency-slice";
 import { RootState } from '../../../types/RootStateTypes';
 
 const MobileLangCurrChange = () => {
@@ -11,7 +11,11 @@ const MobileLangCurrChange = () => {
 
   const changeLanguageTrigger = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const languageCode = e.target.value;
-    i18n.changeLanguage(languageCode);
+    if (i18n.changeLanguage) {
+      i18n.changeLanguage(languageCode);
+    } else {
+      console.error("changeLanguage function is not defined on i18n object.");
+    }
     closeMobileMenu();
   };
 
@@ -39,8 +43,8 @@ const MobileLangCurrChange = () => {
           onChange={changeLanguageTrigger}
         >
           <option value="en">English</option>
-          <option value="fn">French</option>
-          <option value="de">Germany</option>
+          <option value="fr">French</option>
+          <option value="de">German</option>
         </select>
       </div>
       <div className="lang-curr-style">

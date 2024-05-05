@@ -49,9 +49,6 @@ const ProductDescriptionInfo: React.FC<ProductDescriptionInfoProps> = ({
     selectedProductSize
   );
 
-  console.log(product.stock);
-
-
   return (
     <div className="product-details-content ml-70">
       <h2>{product.name}</h2>

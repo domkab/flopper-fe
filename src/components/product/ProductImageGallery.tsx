@@ -1,5 +1,5 @@
 import React, { Fragment, useState } from "react";
-import { EffectFade, Thumbs } from 'swiper';
+import { EffectFade, Thumbs } from "swiper";
 import AnotherLightbox from "yet-another-react-lightbox";
 import Thumbnails from "yet-another-react-lightbox/plugins/thumbnails";
 import Zoom from "yet-another-react-lightbox/plugins/zoom";
@@ -25,9 +25,9 @@ const ProductImageGallery: React.FC<ProductImageGalleryProps> = ({ product }) =>
     loop: true,
     effect: "fade",
     fadeEffect: {
-      crossFade: true
+      crossFade: true,
     },
-    thumbs: { swiper: thumbsSwiper },
+    thumbs: thumbsSwiper ? { swiper: thumbsSwiper } : undefined,
     modules: [EffectFade, Thumbs],
   };
 
@@ -39,7 +39,7 @@ const ProductImageGallery: React.FC<ProductImageGalleryProps> = ({ product }) =>
     freeMode: true,
     loop: true,
     slideToClickedSlide: true,
-    navigation: true
+    navigation: true,
   };
 
   return (

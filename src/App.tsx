@@ -11,6 +11,8 @@ const ProductTabLeft = lazy(() =>
   import("./pages/shop-product/ProductTabLeft")
 );
 
+const Product = lazy(() => import("./pages/shop-product/Product"));
+
 const App: React.FC = () => {
   return (
     <Router>
@@ -31,13 +33,23 @@ const App: React.FC = () => {
               path={import.meta.env.VITE_PUBLIC_URL}
               element={<HomeFashionSix />}
             />
+            {/* shopping grid */}
             <Route
               path={import.meta.env.VITE_PUBLIC_URL + "/shop-grid-standard"}
               element={<ShopGridStandard />}
             />
+            {/* product pages */}
             <Route
               path={import.meta.env.VITE_PUBLIC_URL + "/product-tab-left/:id"}
               element={<ProductTabLeft />}
+            />
+            <Route
+              path={import.meta.env.VITE_PUBLIC_URL + "/product/:id"}
+              element={<Product />}
+            />
+            <Route
+              path={import.meta.env.VITE_PUBLIC_URL + "/cart"}
+              element={<Cart />}
             />
           </Routes>
         </Suspense>

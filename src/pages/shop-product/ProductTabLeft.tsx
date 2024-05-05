@@ -12,8 +12,7 @@ import ProductImageDescription from "../../wrappers/product/ProductImageDescript
 const ProductTabLeft = () => {
   let { pathname } = useLocation();
   let { id } = useParams<{ id: string }>();
-  
-  // Typed useSelector
+
   const { products } = useSelector((state: RootState) => state.product);
   const product: Product | undefined = products.find((product: Product) => product.id === id);
 

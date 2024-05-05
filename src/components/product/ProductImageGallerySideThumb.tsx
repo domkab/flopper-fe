@@ -13,7 +13,10 @@ interface ProductImageGalleryLeftThumbProps {
   thumbPosition?: string;
 }
 
-const ProductImageGalleryLeftThumb: React.FC<ProductImageGalleryLeftThumbProps> = ({ product, thumbPosition }) => {
+const ProductImageGalleryLeftThumb: React.FC<ProductImageGalleryLeftThumbProps> = (
+  { product,
+    thumbPosition
+  }) => {
   const [thumbsSwiper, setThumbsSwiper] = useState<any>(null);
   const [index, setIndex] = useState<number>(-1);
   const slides = product?.image.map((img: string, i: number) => ({
