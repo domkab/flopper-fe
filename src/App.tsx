@@ -2,6 +2,7 @@ import './App.scss'
 import { Suspense, lazy } from "react";
 import ScrollToTop from "./helpers/scroll-top";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Cart from './pages/other/Cart';
 
 console.log('Environment VITE_PUBLIC_URL:', import.meta.env.VITE_PUBLIC_URL);
 

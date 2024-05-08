@@ -32,9 +32,15 @@ export interface Product {
 
 export interface CartItem {
   id: string;
+  name: string;
+  image: string[];
+  price: number;
   discount: number;
   quantity: number;
+  cartItemId: string;
   product: Product;
+  selectedProductColor?: string;
+  selectedProductSize?: string;
 }
 
 export interface WishlistItem {

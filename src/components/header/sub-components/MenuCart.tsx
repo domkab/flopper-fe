@@ -17,6 +17,10 @@ const MenuCart = () => {
         <Fragment>
           <ul>
             {cartItems.map((item) => {
+              if (!item.product || typeof item.product.price === "undefined") {
+                return null;
+              }
+
               const discountedPrice = getDiscountPrice(item.product.price, item.product.discount);
               const finalProductPrice = +(item.product.price * currency.currencyRate).toFixed(2);
               const finalDiscountedPrice = discountedPrice ? +(discountedPrice * currency.currencyRate).toFixed(2) : null;
@@ -48,10 +52,12 @@ const MenuCart = () => {
                     <span>
                       {currency.symbol}{finalDiscountedPrice != null ? finalDiscountedPrice : finalProductPrice}
                     </span>
-                    <div className="cart-item-variation">
-                      <span>Color: {item.product.selectedProductColor}</span>
-                      <span>Size: {item.product.selectedProductSize}</span>
-                    </div>
+                    {item.product.selectedProductColor && item.product.selectedProductSize && (
+                      <div className="cart-item-variation">
+                        <span>Color: {item.product.selectedProductColor}</span>
+                        <span>Size: {item.product.selectedProductSize}</span>
+                      </div>
+                    )}
                   </div>
                   <div className="shopping-cart-delete">
                     <button onClick={() => dispatch(deleteFromCart(item.id))}>
