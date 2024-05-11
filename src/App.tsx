@@ -2,7 +2,6 @@ import './App.scss'
 import { Suspense, lazy } from "react";
 import ScrollToTop from "./helpers/scroll-top";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Cart from './pages/other/Cart';
 
 console.log('Environment VITE_PUBLIC_URL:', import.meta.env.VITE_PUBLIC_URL);
 
@@ -13,6 +12,9 @@ const ProductTabLeft = lazy(() =>
 );
 
 const Product = lazy(() => import("./pages/shop-product/Product"));
+const Cart = lazy(() => import("./pages/other/Cart"));
+const Checkout = lazy(() => import("./pages/other/Checkout"));
+const Wishlist = lazy(() => import("./pages/other/Wishlist"));
 
 const App: React.FC = () => {
   return (
@@ -48,9 +50,19 @@ const App: React.FC = () => {
               path={import.meta.env.VITE_PUBLIC_URL + "/product/:id"}
               element={<Product />}
             />
+
+            {/* other pages */}
             <Route
               path={import.meta.env.VITE_PUBLIC_URL + "/cart"}
               element={<Cart />}
+            />
+            <Route
+              path={import.meta.env.VITE_PUBLIC_URL + "/checkout"}
+              element={<Checkout />}
+            />
+            <Route
+              path={import.meta.env.VITE_PUBLIC_URL + "/wishlist"}
+              element={<Wishlist />}
             />
           </Routes>
         </Suspense>

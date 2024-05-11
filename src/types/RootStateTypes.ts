@@ -43,10 +43,10 @@ export interface CartItem {
   selectedProductSize?: string;
 }
 
-export interface WishlistItem {
-  id: string;
-  product: Product;
-}
+// export interface WishlistItem {
+//   id: string;
+//   product: Product;
+// }
 
 export interface CompareItem {
   id: string;
@@ -82,7 +82,7 @@ export interface CartState {
 }
 
 export interface WishlistState {
-  wishlistItems: WishlistItem[];
+  wishlistItems: Product[];
 }
 
 export interface RootState {

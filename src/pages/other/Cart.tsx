@@ -9,7 +9,7 @@ import { addToCart, decreaseQuantity, deleteFromCart, deleteAllFromCart } from "
 import { cartItemStock } from "../../helpers/product";
 import { RootState, CartItem } from "../../types/RootStateTypes";
 
-const Cart = () => {
+const Cart: React.FC = () => {
   let cartTotalPrice = 0;
 
   const [quantityCount] = useState(1);
@@ -20,7 +20,6 @@ const Cart = () => {
   const { cartItems } = useSelector((state: RootState) => state.cart);
 
   console.log(cartItems);
-
 
   return (
     <Fragment>
