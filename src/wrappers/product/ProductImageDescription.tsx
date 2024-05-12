@@ -56,9 +56,9 @@ const ProductImageDescription: React.FC<ProductImageDescriptionProps> = ({
             {/* product description info */}
             <ProductDescriptionInfo
               product={product}
-              discountedPrice={discountedPrice ?? 0}  // Handle possibly null
+              discountedPrice={discountedPrice ?? 0}
               currency={currency}
-              finalDiscountedPrice={finalDiscountedPrice ?? 0}  // Handle possibly null
+              finalDiscountedPrice={finalDiscountedPrice ?? 0}
               finalProductPrice={finalProductPrice}
               cartItems={cartItems}
               wishlistItem={wishlistItem}

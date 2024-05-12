@@ -43,10 +43,10 @@ export interface CartItem {
   selectedProductSize?: string;
 }
 
-// export interface WishlistItem {
-//   id: string;
-//   product: Product;
-// }
+export interface WishlistItem {
+  id: string;
+  product: Product;
+}
 
 export interface CompareItem {
   id: string;

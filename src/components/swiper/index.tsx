@@ -25,8 +25,8 @@ const SwiperSlider = forwardRef<HTMLDivElement, SwiperSliderProps>(({
   children = null,
   className = '',
   navClass = '',
-  navStyle = 1, // Default value for navStyle
-  dotStyle = 1, // Default value for dotStyle
+  navStyle = 1,
+  dotStyle = 1,
 }, ref) => {
   const modules = options?.modules !== undefined ? options.modules : [];
   const prevClass = `prev-${navClass || "swiper-nav"}`;
