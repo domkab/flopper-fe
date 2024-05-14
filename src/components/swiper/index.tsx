@@ -1,7 +1,11 @@
 import { forwardRef } from "react";
 import cn from "clsx";
-import { Navigation, Pagination, Autoplay, A11y } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Pagination, Autoplay, A11y } from "swiper";
+
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
 
 interface SwiperSliderProps {
   options?: any;
@@ -21,8 +25,8 @@ const SwiperSlider = forwardRef<HTMLDivElement, SwiperSliderProps>(({
   children = null,
   className = '',
   navClass = '',
-  navStyle = 1, // Default value for navStyle
-  dotStyle = 1, // Default value for dotStyle
+  navStyle = 1,
+  dotStyle = 1,
 }, ref) => {
   const modules = options?.modules !== undefined ? options.modules : [];
   const prevClass = `prev-${navClass || "swiper-nav"}`;

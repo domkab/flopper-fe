@@ -1,16 +1,6 @@
 import cogoToast from 'cogo-toast';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-
-interface WishlistItem {
-  id: string;
-  name: string;
-  price: number;
-  // imageUrl: string;
-}
-
-interface WishlistState {
-  wishlistItems: WishlistItem[];
-}
+import { Product, WishlistState } from '../../types/RootStateTypes';
 
 const initialState: WishlistState = {
   wishlistItems: []
@@ -20,7 +10,7 @@ const wishlistSlice = createSlice({
   name: 'wishlist',
   initialState,
   reducers: {
-    addToWishlist(state, action: PayloadAction<WishlistItem>) {
+    addToWishlist(state, action: PayloadAction<Product>) {
       const isInWishlist = state.wishlistItems.findIndex(item => item.id === action.payload.id);
       if (isInWishlist > -1) {
         cogoToast.info("Product already in wishlist", { position: "bottom-left" });

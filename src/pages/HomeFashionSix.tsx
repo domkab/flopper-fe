@@ -4,8 +4,8 @@ import LayoutSeven from "../layouts/LayoutSeven";
 import HeroSliderFourteen from "../wrappers/HeroSliderFourteen";
 import SectionTitleWithText from "../components/section-title/SectionTitleWithText";
 import TabProductEight from "../wrappers/product/TabProductEight";
-import NewsletterTwo from "../../wrappers/newsletter/NewsletterTwo";
-import ImageSliderOne from "../../wrappers/image-slider/ImageSliderOne";
+import NewsletterTwo from "../wrappers/newsletter/NewsletterTwo";
+import ImageSliderOne from "../wrappers/image-slider/ImageSliderOne";
 
 const HomeFashionSix = () => {
   return (

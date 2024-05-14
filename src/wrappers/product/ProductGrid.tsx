@@ -1,7 +1,7 @@
 import { FC, Fragment } from 'react';
 import { useSelector } from 'react-redux';
 import { ProductGridProps, RootState } from '../../types/RootStateTypes';
-import ProductGridSingle from './ProductGridSingle';
+import ProductGridSingle from '../../components/product/ProductGridSingle';
 import { getProducts } from '../../helpers/product';
 import { Product } from '../../types/RootStateTypes';
 

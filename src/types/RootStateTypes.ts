@@ -30,18 +30,17 @@ export interface Product {
   selectedProductSize?: string;
 }
 
-export interface Currency {
-  code: string;
-  symbol: string;
-  currencyRate: number;
-  currencySymbol: string;
-}
-
 export interface CartItem {
   id: string;
+  name: string;
+  image: string[];
+  price: number;
   discount: number;
   quantity: number;
+  cartItemId: string;
   product: Product;
+  selectedProductColor?: string;
+  selectedProductSize?: string;
 }
 
 export interface WishlistItem {
@@ -64,9 +63,18 @@ export interface ProductState {
   products: Product[];
 }
 
+export interface Currency {
+  code: string;
+  symbol: string;
+  currencyRate: number;
+  currencySymbol: string;
+}
+
 export interface CurrencyState {
   current: Currency;
   currencySymbol: string;
+  currencyRate: number;
+  currencyName: string;
 }
 
 export interface CartState {
@@ -74,7 +82,7 @@ export interface CartState {
 }
 
 export interface WishlistState {
-  wishlistItems: WishlistItem[];
+  wishlistItems: Product[];
 }
 
 export interface RootState {
