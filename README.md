@@ -1,7 +1,4 @@
-todo
-
-1.persirasyt seo norm
-2.hero slider truksta styling
+e com template for building sites, locally we have js project with more boilerplate to customize from.
 
 known issues:
 

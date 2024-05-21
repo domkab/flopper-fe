@@ -17,12 +17,11 @@ const MenuCart = () => {
         <Fragment>
           <ul>
             {cartItems.map((item) => {
-              if (!item.product || typeof item.product.price === "undefined") {
-                return null;
-              }
-
-              const discountedPrice = getDiscountPrice(item.product.price, item.product.discount);
-              const finalProductPrice = +(item.product.price * currency.currencyRate).toFixed(2);
+              // if (!item.product || typeof item.product.price === "undefined") {
+              //   return null;
+              // }
+              const discountedPrice = getDiscountPrice(item.price, item.discount);
+              const finalProductPrice = +(item.price * currency.currencyRate).toFixed(2);
               const finalDiscountedPrice = discountedPrice ? +(discountedPrice * currency.currencyRate).toFixed(2) : null;
 
               if (finalDiscountedPrice != null) {
@@ -34,33 +33,33 @@ const MenuCart = () => {
               return (
                 <li className="single-shopping-cart" key={item.id}>
                   <div className="shopping-cart-img">
-                    <Link to={`/product/${item.product.id}`}>
+                    <Link to={`/product/${item.id}`}>
                       <img
                         alt=""
-                        src={`${item.product.image[0]}`}
+                        src={`${item.image[0]}`}
                         className="img-fluid"
                       />
                     </Link>
                   </div>
                   <div className="shopping-cart-title">
                     <h4>
-                      <Link to={`/product/${item.product.id}`}>
-                        {item.product.name}
+                      <Link to={`/product/${item.id}`}>
+                        {item.name}
                       </Link>
                     </h4>
                     <h6>Qty: {item.quantity}</h6>
                     <span>
                       {currency.symbol}{finalDiscountedPrice != null ? finalDiscountedPrice : finalProductPrice}
                     </span>
-                    {item.product.selectedProductColor && item.product.selectedProductSize && (
+                    {item.selectedProductColor && item.selectedProductSize && (
                       <div className="cart-item-variation">
-                        <span>Color: {item.product.selectedProductColor}</span>
-                        <span>Size: {item.product.selectedProductSize}</span>
+                        <span>Color: {item.selectedProductColor}</span>
+                        <span>Size: {item.selectedProductSize}</span>
                       </div>
                     )}
                   </div>
                   <div className="shopping-cart-delete">
-                    <button onClick={() => dispatch(deleteFromCart(item.id))}>
+                    <button onClick={() => dispatch(deleteFromCart(item.cartItemId))}>
                       <i className="fa fa-times-circle" />
                     </button>
                   </div>
@@ -69,7 +68,12 @@ const MenuCart = () => {
             })}
           </ul>
           <div className="shopping-cart-total">
-            <h4>Total : <span className="shop-total">{currency.symbol}{cartTotalPrice.toFixed(2)}</span></h4>
+            <h4>
+              Total :
+              <span className="shop-total">
+                {currency.symbol}{cartTotalPrice.toFixed(2)}
+              </span>
+            </h4>
           </div>
           <div className="shopping-cart-btn btn-hover text-center">
             <Link className="default-btn" to="/cart">view cart</Link>

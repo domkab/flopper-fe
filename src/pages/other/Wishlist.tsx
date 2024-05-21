@@ -16,7 +16,6 @@ const Wishlist = () => {
   const currency = useSelector((state: RootState) => state.currency);
   const { wishlistItems } = useSelector((state: RootState) => state.wishlist);
   const { cartItems } = useSelector((state: RootState) => state.cart);
-  console.log(wishlistItems);
 
   return (
     <Fragment>
@@ -51,7 +50,7 @@ const Wishlist = () => {
                         </thead>
                         <tbody>
                           {wishlistItems.map((wishlistItem, key) => {
-                            console.log(wishlistItem);
+                            console.log(wishlistItem, 'product');
 
                             const discountedPrice = getDiscountPrice(
                               wishlistItem.price,

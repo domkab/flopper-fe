@@ -43,9 +43,17 @@ export interface CartItem {
   selectedProductSize?: string;
 }
 
+export interface CartState {
+  cartItems: CartItem[];
+}
+
 export interface WishlistItem {
   id: string;
   product: Product;
+}
+
+export interface WishlistState {
+  wishlistItems: Product[];
 }
 
 export interface CompareItem {
@@ -75,14 +83,6 @@ export interface CurrencyState {
   currencySymbol: string;
   currencyRate: number;
   currencyName: string;
-}
-
-export interface CartState {
-  cartItems: CartItem[];
-}
-
-export interface WishlistState {
-  wishlistItems: Product[];
 }
 
 export interface RootState {

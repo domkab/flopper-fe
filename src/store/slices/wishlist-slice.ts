@@ -1,6 +1,6 @@
 import cogoToast from 'cogo-toast';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { Product, WishlistState } from '../../types/RootStateTypes';
+import { Product, WishlistItem, WishlistState } from '../../types/RootStateTypes';
 
 const initialState: WishlistState = {
   wishlistItems: []

@@ -1,18 +1,7 @@
 import { v4 as uuidv4 } from 'uuid'
 import cogoToast from 'cogo-toast'
 import { createSlice } from '@reduxjs/toolkit'
-
-interface CartItem {
-  id: string;
-  quantity: number;
-  cartItemId: string;
-  selectedProductColor?: string;
-  selectedProductSize?: string;
-}
-
-interface CartState {
-  cartItems: CartItem[];
-}
+import { CartState } from '../../types/RootStateTypes';
 
 const initialState: CartState = {
   cartItems: []
