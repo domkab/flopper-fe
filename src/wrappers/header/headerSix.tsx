@@ -37,6 +37,8 @@ const HeaderSix: React.FC<HeaderSixProps> = ({
     setOffcanvasActive(state);
   };
 
+  // "header-padding-2 sticky-bar header-res-padding clearfix stick"
+
   return (
     <header
       className={clsx(
