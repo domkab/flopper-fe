@@ -70,7 +70,7 @@ const HeaderOne = ({
               {/* header logo */}
               <Logo imageUrl="/assets/img/logo/logo.png" logoClass="logo" />
             </div>
-            <div className="col-xl-8 col-lg-8 d-none d-lg-block">
+            <div className="col-xl-8 col-lg-8 d-none d-lg-block mb-32">
               {/* Nav menu */}
               <NavMenu />
             </div>

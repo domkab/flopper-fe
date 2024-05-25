@@ -3,14 +3,14 @@ import { CurrencyState } from "../../types/RootStateTypes";
 
 const initialState: CurrencyState = {
   current: {
-    code: "EUR",
-    symbol: "€",
+    code: "USD",
+    symbol: "$",
     currencyRate: 1,
-    currencySymbol: "€",
+    currencySymbol: "$",
   },
   currencyRate: 1,
-  currencySymbol: "€",
-  currencyName: "EUR",
+  currencySymbol: "$",
+  currencyName: "USD",
 };
 
 const currencySlice = createSlice({

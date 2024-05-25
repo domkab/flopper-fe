@@ -37,8 +37,6 @@ const HeaderSix: React.FC<HeaderSixProps> = ({
     setOffcanvasActive(state);
   };
 
-  // "header-padding-2 sticky-bar header-res-padding clearfix stick"
-
   return (
     <header
       className={clsx(
@@ -79,10 +77,10 @@ const HeaderSix: React.FC<HeaderSixProps> = ({
         </div>
       </div>
       {/* offcanvas menu */}
-      <OffcanvasMenu
+      {/* <OffcanvasMenu
         activeState={offcanvasActive}
         getActiveState={getActiveState}
-      />
+      /> */}
       {/* mobile menu */}
       <MobileMenu />
     </header>

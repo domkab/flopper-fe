@@ -13,13 +13,11 @@ const SectionTitleWithText: React.FC<SectionTitleWithTextProps> = (
     <div className={clsx("welcome-area", spaceTopClass, spaceBottomClass)}>
       <div className="container">
         <div className="welcome-content text-center">
-          <h5>Who Are We</h5>
-          <h1>Welcome To Flone</h1>
+          <h5>Flop your floppers</h5>
+          <h1>Don't flop your Summer!</h1>
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-            eiusmod tempor incididunt labor et dolore magna aliqua. Ut enim ad
-            minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commo consequat irure{" "}
+            Get ready to make a splash this summer with our one-of-a-kind Shark Floppers! Designed for both comfort and style, these floppers feature an adorable shark design that's perfect for beach days, pool parties, or just lounging around. Made with high-quality, durable materials, our floppers ensure maximum comfort and longevity.
+            {" "}
           </p>
         </div>
       </div>

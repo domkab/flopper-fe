@@ -1,7 +1,8 @@
 import PropTypes from "prop-types";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import clsx from "clsx";
+import Breadcrumb from '../../wrappers/breadcrumb/Breadcrumb';
 
 interface NavMenuProps {
   menuWhiteClass?: string,
@@ -10,15 +11,23 @@ interface NavMenuProps {
 
 const NavMenu: React.FC<NavMenuProps> = ({ menuWhiteClass, sidebarMenu }) => {
   const { t } = useTranslation();
-  
+  let { pathname } = useLocation();
+
   return (
     <div
       className={clsx(sidebarMenu
-          ? "sidebar-menu"
-          : `main-menu ${menuWhiteClass ? menuWhiteClass : ""}`)}
+        ? "sidebar-menu"
+        : `main-menu ${menuWhiteClass ? menuWhiteClass : ""}`)}
     >
       <nav>
-        <ul>
+        <Breadcrumb
+          pages={[
+            { label: "Home", path: import.meta.env.VITE_PUBLIC_URL + "/" },
+            { label: "Shop", path: import.meta.env.VITE_PUBLIC_URL + pathname }
+          ]}
+        />
+        {/* <ul>
+
           <li>
             <Link to={import.meta.env.VITE_PUBLIC_URL + "/"}>
               {t("home")}
@@ -500,10 +509,10 @@ const NavMenu: React.FC<NavMenuProps> = ({ menuWhiteClass, sidebarMenu }) => {
           </li>
           <li>
             <Link to={import.meta.env.VITE_PUBLIC_URL + "/contact"}>
-              {t("contact_us")}
+              {t("contact us")}
             </Link>
           </li>
-        </ul>
+        </ul> */}
       </nav>
     </div>
   );

@@ -56,12 +56,12 @@ const ShopGridStandard = () => {
 
       <LayoutOne headerTop="visible">
         {/* breadcrumb */}
-        <Breadcrumb
+        {/* <Breadcrumb
           pages={[
             { label: "Home", path: import.meta.env.VITE_PUBLIC_URL + "/" },
             { label: "Shop", path: import.meta.env.VITE_PUBLIC_URL + pathname }
           ]}
-        />
+        /> */}
 
         <div className="shop-area pt-95 pb-100">
           <div className="container">

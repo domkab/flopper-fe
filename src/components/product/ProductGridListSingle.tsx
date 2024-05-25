@@ -117,7 +117,7 @@ const ProductGridListSingle: React.FC<ProductGridListSingleProps> = ({
                     : "Add to cart"}
                 </button>
               ) : (
-                <button disabled className="active">
+                <button disabled className="active button__no-stock">
                   Out of Stock
                 </button>
               )}

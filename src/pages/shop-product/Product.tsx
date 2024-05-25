@@ -24,12 +24,12 @@ const Product: React.FC = () => {
 
       <LayoutOne headerTop="visible">
         {/* breadcrumb */}
-        <Breadcrumb
+        {/* <Breadcrumb
           pages={[
             { label: "Home", path: import.meta.env.VITE_PUBLIC_URL + "/" },
             { label: "Shop Product", path: import.meta.env.VITE_PUBLIC_URL + pathname }
           ]}
-        />
+        /> */}
 
         {/* product description with image */}
         {product && (

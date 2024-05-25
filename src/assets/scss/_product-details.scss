@@ -589,10 +589,13 @@
       color: #fff;
       border-radius: 3px;
       &.pink {
-        background-color: #fa6bff;
+        background-color: red;
       }
       &.purple {
-        background-color: #a749ff;
+        background-color: red;
+      }
+      &.red {
+        background-color: red;
       }
     }
   }

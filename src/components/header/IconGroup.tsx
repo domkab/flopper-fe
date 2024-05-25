@@ -28,7 +28,7 @@ const IconGroup = ({ iconWhiteClass } : IconGroupProps) => {
 
   return (
     <div className={clsx("header-right-wrap", iconWhiteClass)} >
-      <div className="same-style header-search d-none d-lg-block">
+      {/* <div className="same-style header-search d-none d-lg-block">
         <button className="search-active" onClick={e => handleClick(e)}>
           <i className="pe-7s-search" />
         </button>
@@ -73,7 +73,7 @@ const IconGroup = ({ iconWhiteClass } : IconGroupProps) => {
             {compareItems && compareItems.length ? compareItems.length : 0}
           </span>
         </Link>
-      </div>
+      </div> */}
       <div className="same-style header-wishlist">
         <Link to={import.meta.env.VITE_PUBLIC_URL + "/wishlist"}>
           <i className="pe-7s-like" />
