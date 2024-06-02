@@ -1,12 +1,11 @@
-import PropTypes from "prop-types";
 import React, { Fragment, useState } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { getProductCartQuantity } from "../../helpers/product";
-import Rating from "./sub-components/ProductRating";
+// import Rating from "./sub-components/ProductRating";
 import { addToCart } from "../../store/slices/cart-slice";
 import { addToWishlist } from "../../store/slices/wishlist-slice";
-import { addToCompare } from "../../store/slices/compare-slice";
+// import { addToCompare } from "../../store/slices/compare-slice";
 import { Product, CartItem, WishlistItem, CompareItem, Currency } from "../../types/RootStateTypes";
 
 interface ProductDescriptionInfoProps {
@@ -28,7 +27,6 @@ const ProductDescriptionInfo: React.FC<ProductDescriptionInfoProps> = ({
   finalProductPrice,
   cartItems,
   wishlistItem,
-  compareItem,
 }) => {
   const dispatch = useDispatch();
   const [selectedProductColor, setSelectedProductColor] = useState<string>(
@@ -64,7 +62,7 @@ const ProductDescriptionInfo: React.FC<ProductDescriptionInfoProps> = ({
           <span>{currency.currencySymbol + finalProductPrice} </span>
         )}
       </div>
-      {product.rating && product.rating > 0 ? (
+      {/* {product.rating && product.rating > 0 ? (
         <div className="pro-details-rating-wrap">
           <div className="pro-details-rating">
             <Rating ratingValue={product.rating} />
@@ -72,7 +70,7 @@ const ProductDescriptionInfo: React.FC<ProductDescriptionInfoProps> = ({
         </div>
       ) : (
         ""
-      )}
+      )} */}
       <div className="pro-details-list">
         <p>{product.shortDescription}</p>
       </div>
@@ -214,12 +212,12 @@ const ProductDescriptionInfo: React.FC<ProductDescriptionInfoProps> = ({
                   ? "Added to wishlist"
                   : "Add to wishlist"
               }
-              onClick={() => dispatch(addToWishlist(product))}
+              onClick={() => dispatch(addToWishlist({ id: product.id, product }))}
             >
               <i className="pe-7s-like" />
             </button>
           </div>
-          <div className="pro-details-compare">
+          {/* <div className="pro-details-compare">
             <button
               className={compareItem !== undefined ? "active" : ""}
               disabled={compareItem !== undefined}
@@ -232,7 +230,7 @@ const ProductDescriptionInfo: React.FC<ProductDescriptionInfoProps> = ({
             >
               <i className="pe-7s-shuffle" />
             </button>
-          </div>
+          </div> */}
         </div>
       )}
       {product.category ? (
@@ -269,7 +267,7 @@ const ProductDescriptionInfo: React.FC<ProductDescriptionInfoProps> = ({
       ) : (
         ""
       )}
-      <div className="pro-details-social">
+      {/* <div className="pro-details-social">
         <ul>
           <li>
             <a href="//facebook.com">
@@ -297,7 +295,7 @@ const ProductDescriptionInfo: React.FC<ProductDescriptionInfoProps> = ({
             </a>
           </li>
         </ul>
-      </div>
+      </div> */}
     </div>
   );
 };

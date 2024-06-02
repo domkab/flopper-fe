@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { getDiscountPrice } from "../../helpers/product";
@@ -6,13 +6,55 @@ import SEO from "../../components/seo";
 import LayoutOne from "../../layouts/LayoutOne";
 import Breadcrumb from "../../wrappers/breadcrumb/Breadcrumb";
 import { RootState } from '../../types/RootStateTypes';
+import Select, { SingleValue } from 'react-select';
+import { allCountries } from 'country-region-data'; 
+console.log(allCountries);
+
+
+interface OptionType {
+  label: string;
+  value: string;
+}
+
+interface Country {
+  countryName: string;
+  countryShortCode: string;
+  regions: [string, string][];
+}
+
 
 const Checkout: React.FC = () => {
   let cartTotalPrice = 0;
 
   let { pathname } = useLocation();
   const currency = useSelector((state: RootState) => state.currency);
-  const { cartItems } = useSelector((state: RootState) => state.cart); 
+  const { cartItems } = useSelector((state: RootState) => state.cart);
+
+  const [selectedCountry, setSelectedCountry] = useState<SingleValue<OptionType>>(null);
+  const [selectedRegion, setSelectedRegion] = useState<SingleValue<OptionType>>(null);
+  const [regions, setRegions] = useState<OptionType[]>([]);
+
+  const handleCountryChange = (selectedOption: SingleValue<OptionType>) => {
+    setSelectedCountry(selectedOption);
+    if (selectedOption) {
+      const countryData = allCountries.find(
+        (country) => country[1] === selectedOption.value
+      );
+      if (countryData) {
+        setRegions(countryData[2].map((region: [string, string]) => {
+          return { label: region[0], value: region[1] };
+        }));
+      } else {
+        setRegions([]);
+      }
+      setSelectedRegion(null);
+    }
+  };
+
+
+  const handleRegionChange = (selectedOption: SingleValue<OptionType>) => {
+    setSelectedRegion(selectedOption);
+  };
 
   return (
     <Fragment>
@@ -21,7 +63,6 @@ const Checkout: React.FC = () => {
         description="Checkout page of flone react minimalist eCommerce template."
       />
       <LayoutOne headerTop="visible">
-        {/* breadcrumb */}
         <Breadcrumb
           pages={[
             { label: "Home", path: import.meta.env.VITE_PUBLIC_URL + "/" },
@@ -50,21 +91,24 @@ const Checkout: React.FC = () => {
                       </div>
                       <div className="col-lg-12">
                         <div className="billing-info mb-20">
-                          <label>Company Name</label>
+                          <label>Email Address</label>
                           <input type="text" />
+                        </div>
+                      </div>
+                      <div className="col-lg-12">
+                        <div className="billing-info mb-20">
+                        <label>Phone</label>
+                      <input type="number" />
                         </div>
                       </div>
                       <div className="col-lg-12">
                         <div className="billing-select mb-20">
                           <label>Country</label>
-                          <select>
-                            <option>Select a country</option>
-                            <option>Azerbaijan</option>
-                            <option>Bahamas</option>
-                            <option>Bahrain</option>
-                            <option>Bangladesh</option>
-                            <option>Barbados</option>
-                          </select>
+                          <Select
+                            options={allCountries.map((country) => ({ label: country[0], value: country[1] }))}
+                            value={selectedCountry}
+                            onChange={handleCountryChange}
+                          />
                         </div>
                       </div>
                       <div className="col-lg-12">
@@ -73,10 +117,6 @@ const Checkout: React.FC = () => {
                           <input
                             className="billing-address"
                             placeholder="House number and street name"
-                            type="text"
-                          />
-                          <input
-                            placeholder="Apartment, suite, unit etc."
                             type="text"
                           />
                         </div>
@@ -90,7 +130,12 @@ const Checkout: React.FC = () => {
                       <div className="col-lg-6 col-md-6">
                         <div className="billing-info mb-20">
                           <label>State / County</label>
-                          <input type="text" />
+                          <Select
+                            options={regions}
+                            value={selectedRegion}
+                            onChange={handleRegionChange}
+                            isDisabled={!regions.length}
+                          />
                         </div>
                       </div>
                       <div className="col-lg-6 col-md-6">
@@ -101,27 +146,7 @@ const Checkout: React.FC = () => {
                       </div>
                       <div className="col-lg-6 col-md-6">
                         <div className="billing-info mb-20">
-                          <label>Phone</label>
-                          <input type="text" />
                         </div>
-                      </div>
-                      <div className="col-lg-6 col-md-6">
-                        <div className="billing-info mb-20">
-                          <label>Email Address</label>
-                          <input type="text" />
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className="additional-info-wrap">
-                      <h4>Additional information</h4>
-                      <div className="additional-info">
-                        <label>Order notes</label>
-                        <textarea
-                          placeholder="Notes about your order, e.g. special notes for delivery. "
-                          name="message"
-                          defaultValue={""}
-                        />
                       </div>
                     </div>
                   </div>
@@ -175,7 +200,6 @@ const Checkout: React.FC = () => {
                                 </li>
                               );
                             })}
-
                           </ul>
                         </div>
                         <div className="your-order-bottom">

@@ -29,12 +29,12 @@ const Cart: React.FC = () => {
       />
 
       <LayoutOne headerTop="visible">
-        <Breadcrumb
+        {/* <Breadcrumb
           pages={[
             { label: "Home", path: import.meta.env.VITE_PUBLIC_URL + "/" },
             { label: "Cart", path: import.meta.env.VITE_PUBLIC_URL + pathname }
           ]}
-        />
+        /> */}
         <div className="cart-main-area pt-90 pb-100">
           <div className="container">
             {cartItems && cartItems.length >= 1 ? (
@@ -206,12 +206,20 @@ const Cart: React.FC = () => {
                         >
                           Continue Shopping
                         </Link>
+
+                        {/* <button onClick={() => dispatch(deleteAllFromCart())}>
+                          Clear Shopping Cart
+                        </button> */}
                       </div>
                       <div className="cart-clear">
-                        <button onClick={() => dispatch(deleteAllFromCart())}>
-                          Clear Shopping Cart
-                        </button>
+                        <Link
+                          className="button-checkout-alert"
+                          to={import.meta.env.VITE_PUBLIC_URL + "/checkout"}
+                        >
+                          Proceed to Checkout
+                        </Link>
                       </div>
+
                     </div>
                   </div>
                 </div>

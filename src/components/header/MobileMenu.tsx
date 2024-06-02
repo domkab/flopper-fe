@@ -56,9 +56,9 @@ const MobileMenu: React.FC = () => {
       </button>
       <div className="offcanvas-wrapper">
         <div className="offcanvas-inner-content">
-          <MobileMenuSearch />
+          {/* <MobileMenuSearch /> */}
           <MobileNavMenu />
-          <MobileLangCurChange />
+          {/* <MobileLangCurChange /> */}
           <MobileWidgets />
         </div>
       </div>

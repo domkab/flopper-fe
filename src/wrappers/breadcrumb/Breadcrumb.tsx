@@ -12,7 +12,7 @@ interface BreadcrumbWrapProps {
 
 const BreadcrumbWrap: React.FC<BreadcrumbWrapProps> = ({ pages }) => {
   return (
-    <div className="breadcrumb-area pt-15 pb-15">
+    <div className="breadcrumb-area pt-20 pb-20 bg-gray-3">
       <div className="container">
         <Breadcrumb>
           {pages.map(({ path, label }, i) =>

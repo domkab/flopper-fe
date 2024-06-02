@@ -19,8 +19,8 @@ const TabProductEight: React.FC<TabProductEightProps> = ({
   return (
     <div className={clsx("product-area", spaceTopClass, spaceBottomClass, bgColorClass)}>
       <div className="container">
-        <Tab.Container defaultActiveKey="bestSeller">
-          <Nav variant="pills" className="product-tab-list pb-55 text-center">
+        <Tab.Container defaultActiveKey="saleItems">
+          {/* <Nav variant="pills" className="product-tab-list pb-55 text-center">
             <Nav.Item>
               <Nav.Link eventKey="newArrival">
                 <h4>New Arrivals</h4>
@@ -36,7 +36,7 @@ const TabProductEight: React.FC<TabProductEightProps> = ({
                 <h4>Sale Items</h4>
               </Nav.Link>
             </Nav.Item>
-          </Nav>
+          </Nav> */}
           <Tab.Content>
             <Tab.Pane eventKey="newArrival">
               <div className="row">

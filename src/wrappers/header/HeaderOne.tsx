@@ -47,7 +47,7 @@ const HeaderOne = ({
         className={clsx(
           "header-top-area",
           headerPaddingClass,
-          top === "visible" ? "d-none d-lg-block" : "d-none",
+          top === "visible" ? "d-lg-block" : "d-none",
           borderStyle === "fluid-border" && "border-none"
         )}
       >
@@ -56,6 +56,19 @@ const HeaderOne = ({
           <HeaderTop borderStyle={borderStyle || ""} />
         </div>
       </div>
+
+      {/* <div
+        className={clsx(
+          "header-top-area",
+          headerPaddingClass,
+          top === "visible" ? "d-none d-lg-block" : "d-none",
+          borderStyle === "fluid-border" && "border-none"
+        )}
+      >
+        <div className={layout === "container-fluid" ? layout : "container"}>
+          <HeaderTop borderStyle={borderStyle || ""} />
+        </div>
+      </div> */}
 
       <div
         className={clsx(
@@ -68,7 +81,7 @@ const HeaderOne = ({
           <div className="row">
             <div className="col-xl-2 col-lg-2 col-md-6 col-4">
               {/* header logo */}
-              <Logo imageUrl="/assets/img/logo/logo.png" logoClass="logo" />
+              <Logo imageUrl="/assets/img/logo/logo.svg" logoClass="logo" />
             </div>
             <div className="col-xl-8 col-lg-8 d-none d-lg-block mb-32">
               {/* Nav menu */}

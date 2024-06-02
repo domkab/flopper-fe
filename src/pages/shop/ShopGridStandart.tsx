@@ -56,21 +56,17 @@ const ShopGridStandard = () => {
 
       <LayoutOne headerTop="visible">
         {/* breadcrumb */}
-        {/* <Breadcrumb
+        <Breadcrumb
           pages={[
             { label: "Home", path: import.meta.env.VITE_PUBLIC_URL + "/" },
             { label: "Shop", path: import.meta.env.VITE_PUBLIC_URL + pathname }
           ]}
-        /> */}
+        />
 
         <div className="shop-area pt-95 pb-100">
           <div className="container">
             <div className="row">
-              <div className="col-lg-3 order-2 order-lg-1">
-                {/* shop sidebar */}
-                <ShopSidebar products={products} getSortParams={getSortParams} sideSpaceClass="mr-30" />
-              </div>
-              <div className="col-lg-9 order-1 order-lg-2">
+              <div className="col-lg-12 order-1 order-lg-2">
                 {/* shop topbar default */}
                 <ShopTopbar getLayout={getLayout} getFilterSortParams={getFilterSortParams} productCount={products.length} sortedProductCount={currentData.length} />
 
@@ -101,3 +97,8 @@ const ShopGridStandard = () => {
 }
 
 export default ShopGridStandard;
+
+// <div className="col-lg-3 order-2 order-lg-1">
+//{/* shop sidebar */}
+//<ShopSidebar products={products} getSortParams={getSortParams} sideSpaceClass="mr-30" />
+//</div> 

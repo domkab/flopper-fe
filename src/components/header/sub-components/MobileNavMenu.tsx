@@ -7,85 +7,16 @@ const MobileNavMenu: React.FC = () => {
   return (
     <nav className="offcanvas-navigation" id="offcanvas-navigation">
       <ul>
-        <li className="menu-item-has-children">
-          <Link to={import.meta.env.VITE_PUBLIC_URL + "/"}>{t("home")}</Link>
-          <ul className="sub-menu">
+        <li className="menu-item">
+          <Link to={import.meta.env.VITE_PUBLIC_URL + "/home-fashion-six"}>
+            {t("HOME")}
+          </Link>
+          {/* <ul className="sub-menu">
             <li className="menu-item-has-children">
-              <Link to={import.meta.env.VITE_PUBLIC_URL + "/"}>
-                {t("home_group_one")}
+              <Link to={import.meta.env.VITE_PUBLIC_URL + "/home-fashion-six"}>
+                {t("HOME")}
               </Link>
-              <ul className="sub-menu">
-                <li>
-                  <Link to={import.meta.env.VITE_PUBLIC_URL + "/home-fashion"}>
-                    {t("home_fashion")}
-                  </Link>
-                </li>
-                <li>
-                  <Link to={import.meta.env.VITE_PUBLIC_URL + "/home-fashion-two"}>
-                    {t("home_fashion_two")}
-                  </Link>
-                </li>
-                <li>
-                  <Link to={import.meta.env.VITE_PUBLIC_URL + "/home-fashion-three"}>
-                    {t("home_fashion_three")}
-                  </Link>
-                </li>
-                <li>
-                  <Link to={import.meta.env.VITE_PUBLIC_URL + "/home-fashion-four"}>
-                    {t("home_fashion_four")}
-                  </Link>
-                </li>
-                <li>
-                  <Link to={import.meta.env.VITE_PUBLIC_URL + "/home-fashion-five"}>
-                    {t("home_fashion_five")}
-                  </Link>
-                </li>
-                <li>
-                  <Link to={import.meta.env.VITE_PUBLIC_URL + "/home-fashion-six"}>
-                    {t("home_fashion_six")}
-                  </Link>
-                </li>
-                <li>
-                  <Link to={import.meta.env.VITE_PUBLIC_URL + "/home-fashion-seven"}>
-                    {t("home_fashion_seven")}
-                  </Link>
-                </li>
-                <li>
-                  <Link to={import.meta.env.VITE_PUBLIC_URL + "/home-fashion-eight"}>
-                    {t("home_fashion_eight")}
-                  </Link>
-                </li>
-                <li>
-                  <Link to={import.meta.env.VITE_PUBLIC_URL + "/home-kids-fashion"}>
-                    {t("home_kids_fashion")}
-                  </Link>
-                </li>
-                <li>
-                  <Link to={import.meta.env.VITE_PUBLIC_URL + "/home-cosmetics"}>
-                    {t("home_cosmetics")}
-                  </Link>
-                </li>
-                <li>
-                  <Link to={import.meta.env.VITE_PUBLIC_URL + "/home-furniture"}>
-                    {t("home_furniture")}
-                  </Link>
-                </li>
-                <li>
-                  <Link to={import.meta.env.VITE_PUBLIC_URL + "/home-furniture-two"}>
-                    {t("home_furniture_two")}
-                  </Link>
-                </li>
-                <li>
-                  <Link to={import.meta.env.VITE_PUBLIC_URL + "/home-furniture-three"}>
-                    {t("home_furniture_three")}
-                  </Link>
-                </li>
-                <li>
-                  <Link to={import.meta.env.VITE_PUBLIC_URL + "/home-furniture-four"}>
-                    {t("home_furniture_four")}
-                  </Link>
-                </li>
-              </ul>
+
             </li>
             <li className="menu-item-has-children">
               <Link to={import.meta.env.VITE_PUBLIC_URL + "/"}>
@@ -221,14 +152,14 @@ const MobileNavMenu: React.FC = () => {
                 </li>
               </ul>
             </li>
-          </ul>
+          </ul> */}
         </li>
 
-        <li className="menu-item-has-children">
+        <li className="menu-item">
           <Link to={import.meta.env.VITE_PUBLIC_URL + "/shop-grid-standard"}>
             {t("shop")}
           </Link>
-          <ul className="sub-menu">
+          {/* <ul className="sub-menu">
             <li className="menu-item-has-children">
               <Link to={import.meta.env.VITE_PUBLIC_URL + "/shop-grid-standard"}>
                 {t("shop_layout")}
@@ -335,21 +266,23 @@ const MobileNavMenu: React.FC = () => {
                 </li>
               </ul>
             </li>
-          </ul>
+          </ul> */}
         </li>
-        <li>
+        {/* <li>
           <Link to={import.meta.env.VITE_PUBLIC_URL + "/shop-grid-standard"}>
             {t("collection")}
           </Link>
+        </li> */}
+        <li className="menu-item">
+          <Link to={import.meta.env.VITE_PUBLIC_URL + "/checkout"}>
+            {t("checkout")}
+          </Link>
         </li>
-        <li className="menu-item-has-children">
-          <Link to={import.meta.env.VITE_PUBLIC_URL + "/"}>{t("pages")}</Link>
-          <ul className="sub-menu">
-            <li>
-              <Link to={import.meta.env.VITE_PUBLIC_URL + "/cart"}>
-                {t("cart")}
-              </Link>
-            </li>
+        <li className="menu-item">
+          <Link to={import.meta.env.VITE_PUBLIC_URL + "/cart"}>
+            {t("cart")}
+          </Link>
+          {/* <ul className="sub-menu">
             <li>
               <Link to={import.meta.env.VITE_PUBLIC_URL + "/checkout"}>
                 {t("checkout")}
@@ -390,7 +323,7 @@ const MobileNavMenu: React.FC = () => {
                 {t("404_page")}
               </Link>
             </li>
-          </ul>
+          </ul> */}
         </li>
         <li className="menu-item-has-children">
           <Link to={import.meta.env.VITE_PUBLIC_URL + "/blog-standard"}>
@@ -421,7 +354,7 @@ const MobileNavMenu: React.FC = () => {
         </li>
         <li>
           <Link to={import.meta.env.VITE_PUBLIC_URL + "/contact"}>
-            {t("contact_us")}
+            {t("contact us")}
           </Link>
         </li>
       </ul>

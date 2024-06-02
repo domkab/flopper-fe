@@ -1,6 +1,6 @@
 import clsx from "clsx";
 import { Link } from "react-router-dom";
-import HeaderSocial from "./sub-components/HeaderSocial";
+// import HeaderSocial from "./sub-components/HeaderSocial";
 import NavMenu from "./NavMenu";
 
 interface OffcanvasMenuProps {
@@ -31,7 +31,7 @@ const OffcanvasMenu: React.FC<OffcanvasMenuProps> = ({ activeState, getActiveSta
       <NavMenu sidebarMenu={true} />
 
       {/* header social */}
-      <HeaderSocial />
+      {/* <HeaderSocial /> */}
     </div>
   );
 };

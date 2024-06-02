@@ -12,7 +12,7 @@ const ProductGrid: FC<ProductGridProps> = ({
   limit = 0
 }) => {
   const { products } = useSelector((state: RootState) => state.product);
-  const currency = useSelector((state: RootState) => state.currency);
+  const currency = useSelector((state: RootState) => state.currency.current);
   const { cartItems } = useSelector((state: RootState) => state.cart);
   const { wishlistItems } = useSelector((state: RootState) => state.wishlist);
   const { compareItems } = useSelector((state: RootState) => state.compare);

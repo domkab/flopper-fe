@@ -53,7 +53,7 @@ export interface WishlistItem {
 }
 
 export interface WishlistState {
-  wishlistItems: Product[];
+  wishlistItems: WishlistItem[];
 }
 
 export interface CompareItem {

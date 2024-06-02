@@ -2,9 +2,8 @@ import { Fragment, useState } from "react";
 import clsx from "clsx";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import Rating from "./sub-components/ProductRating";
+// import Rating from "./sub-components/ProductRating";
 import { getDiscountPrice } from "../../helpers/product";
-import ProductModal from "./ProductModal";
 import { addToCart } from "../../store/slices/cart-slice";
 import { addToWishlist } from "../../store/slices/wishlist-slice";
 import { Product, Currency, CartItem, WishlistItem, CompareItem } from '../../types/RootStateTypes';
@@ -30,8 +29,8 @@ const ProductGridSingle: React.FC<ProductGridSingleProps> = ({
   const discountedPrice = getDiscountPrice(product.price, product.discount);
   const finalProductPrice = +(product.price * currency.currencyRate).toFixed(2);
   const finalDiscountedPrice = discountedPrice !== null
-  ? +(discountedPrice * currency.currencyRate).toFixed(2)
-  : finalProductPrice;
+    ? +(discountedPrice * currency.currencyRate).toFixed(2)
+    : finalProductPrice;
   const dispatch = useDispatch();
 
   return (
@@ -68,20 +67,6 @@ const ProductGridSingle: React.FC<ProductGridSingleProps> = ({
           )}
 
           <div className="product-action">
-            <div className="pro-same-action pro-wishlist">
-              <button
-                className={wishlistItem !== undefined ? "active" : ""}
-                disabled={wishlistItem !== undefined}
-                title={
-                  wishlistItem !== undefined
-                    ? "Added to wishlist"
-                    : "Add to wishlist"
-                }
-                onClick={() => dispatch(addToWishlist(product))}
-              >
-                <i className="pe-7s-like" />
-              </button>
-            </div>
             <div className="pro-same-action pro-cart">
               {product.affiliateLink ? (
                 <a
@@ -121,11 +106,26 @@ const ProductGridSingle: React.FC<ProductGridSingleProps> = ({
                 </button>
               )}
             </div>
-            <div className="pro-same-action pro-quickview">
+            <div className="pro-same-action pro-wishlist">
+              <button
+                className={wishlistItem !== undefined ? "active" : ""}
+                disabled={wishlistItem !== undefined}
+                title={
+                  wishlistItem !== undefined
+                    ? "Added to wishlist"
+                    : "Add to wishlist"
+                }
+                onClick={() => dispatch(addToWishlist({ id: product.id, product }))}
+              >
+                <i className="pe-7s-like" />
+              </button>
+            </div>
+
+            {/* <div className="pro-same-action pro-quickview">
               <button title="Quick View" onClick={() => setModalShow(true)}>
                 <i className="pe-7s-look" />
               </button>
-            </div>
+            </div> */}
           </div>
         </div>
         <div className="product-content text-center">
@@ -134,13 +134,13 @@ const ProductGridSingle: React.FC<ProductGridSingleProps> = ({
               {product.name}
             </Link>
           </h3>
-          {product.rating && product.rating > 0 ? (
+          {/* {product.rating && product.rating > 0 ? (
             <div className="product-rating">
               <Rating ratingValue={product.rating} />
             </div>
           ) : (
             ""
-          )}
+          )} */}
           <div className="product-price">
             {discountedPrice !== null ? (
               <Fragment>
@@ -155,18 +155,6 @@ const ProductGridSingle: React.FC<ProductGridSingleProps> = ({
           </div>
         </div>
       </div>
-      {/* product modal */}
-      <ProductModal
-        show={modalShow}
-        onHide={() => setModalShow(false)}
-        product={product}
-        currency={currency}
-        discountedPrice={discountedPrice}
-        finalProductPrice={finalProductPrice}
-        finalDiscountedPrice={finalDiscountedPrice}
-        wishlistItem={wishlistItem}
-        compareItem={compareItem}
-      />
     </Fragment>
   );
 };

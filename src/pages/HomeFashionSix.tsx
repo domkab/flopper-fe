@@ -23,7 +23,6 @@ const HomeFashionSix = () => {
         <TabProductEight
           spaceBottomClass="pb-70"
           category="fashion"
-          // sectionTitle={false}
         />
         {/* newsletter */}
         <NewsletterTwo spaceBottomClass="pb-100" />

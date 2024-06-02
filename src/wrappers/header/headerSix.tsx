@@ -63,10 +63,10 @@ const HeaderSix: React.FC<HeaderSixProps> = ({
             {/* header logo */}
             <div className="logo text-center logo-hm5">
               <Link className="sticky-none" to={import.meta.env.VITE_PUBLIC_URL + "/"}>
-                <img alt="" src="assets/img/logo/logo-2.png" />
+                <img className="logo__img" alt="" src="assets/img/logo/logo.svg" />
               </Link>
               <Link className="sticky-block" to={import.meta.env.VITE_PUBLIC_URL + "/"}>
-                <img alt="" src="assets/img/logo/logo.png" />
+                <img className="logo__img" alt="" src="assets/img/logo/logo.svg" />
               </Link>
             </div>
           </div>
@@ -77,10 +77,10 @@ const HeaderSix: React.FC<HeaderSixProps> = ({
         </div>
       </div>
       {/* offcanvas menu */}
-      {/* <OffcanvasMenu
+      <OffcanvasMenu
         activeState={offcanvasActive}
         getActiveState={getActiveState}
-      /> */}
+      />
       {/* mobile menu */}
       <MobileMenu />
     </header>

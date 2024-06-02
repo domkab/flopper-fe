@@ -3,8 +3,7 @@ import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import clsx from "clsx";
 import { getDiscountPrice } from "../../helpers/product";
-import Rating from "./sub-components/ProductRating";
-import ProductModal from "./ProductModal";
+// import Rating from "./sub-components/ProductRating";
 import { addToCart } from "../../store/slices/cart-slice";
 import { addToWishlist } from "../../store/slices/wishlist-slice";
 import { addToCompare } from "../../store/slices/compare-slice";
@@ -69,20 +68,6 @@ const ProductGridListSingle: React.FC<ProductGridListSingleProps> = ({
           )}
 
           <div className="product-action">
-            <div className="pro-same-action pro-wishlist">
-              <button
-                className={wishlistItem !== undefined ? "active" : ""}
-                disabled={wishlistItem !== undefined}
-                title={
-                  wishlistItem !== undefined
-                    ? "Added to wishlist"
-                    : "Add to wishlist"
-                }
-                onClick={() => dispatch(addToWishlist(product))}
-              >
-                <i className="pe-7s-like" />
-              </button>
-            </div>
             <div className="pro-same-action pro-cart">
               {product.affiliateLink ? (
                 <a
@@ -122,11 +107,26 @@ const ProductGridListSingle: React.FC<ProductGridListSingleProps> = ({
                 </button>
               )}
             </div>
-            <div className="pro-same-action pro-quickview">
+            <div className="pro-same-action pro-wishlist">
+              <button
+                className={wishlistItem !== undefined ? "active" : ""}
+                disabled={wishlistItem !== undefined}
+                title={
+                  wishlistItem !== undefined
+                    ? "Added to wishlist"
+                    : "Add to wishlist"
+                }
+                onClick={() => dispatch(addToWishlist({ id: product.id, product }))}
+              >
+                <i className="pe-7s-like" />
+              </button>
+            </div>
+
+            {/* <div className="pro-same-action pro-quickview">
               <button onClick={() => setModalShow(true)} title="Quick View">
                 <i className="pe-7s-look" />
               </button>
-            </div>
+            </div> */}
           </div>
         </div>
         <div className="product-content text-center">
@@ -135,13 +135,13 @@ const ProductGridListSingle: React.FC<ProductGridListSingleProps> = ({
               {product.name}
             </Link>
           </h3>
-          {product.rating && product.rating > 0 ? (
+          {/* {product.rating && product.rating > 0 ? (
             <div className="product-rating">
               <Rating ratingValue={product.rating} />
             </div>
           ) : (
             ""
-          )}
+          )} */}
           <div className="product-price">
             {finalDiscountedPrice !== null ? (
               <Fragment>
@@ -211,7 +211,7 @@ const ProductGridListSingle: React.FC<ProductGridListSingleProps> = ({
                   <span>{currency.currencySymbol + finalProductPrice} </span>
                 )}
               </div>
-              {product.rating && product.rating > 0 ? (
+              {/* {product.rating && product.rating > 0 ? (
                 <div className="rating-review">
                   <div className="product-list-rating">
                     <Rating ratingValue={product.rating} />
@@ -219,7 +219,7 @@ const ProductGridListSingle: React.FC<ProductGridListSingleProps> = ({
                 </div>
               ) : (
                 ""
-              )}
+              )} */}
               {product.shortDescription ? (
                 <p>{product.shortDescription}</p>
               ) : (
@@ -282,9 +282,9 @@ const ProductGridListSingle: React.FC<ProductGridListSingleProps> = ({
                         ? "Added to wishlist"
                         : "Add to wishlist"
                     }
-                    onClick={() => dispatch(addToWishlist(product))}
+                    onClick={() => dispatch(addToWishlist({ id: product.id, product }))}
                   >
-                    <i className= "pe-7s-like" />
+                    <i className="pe-7s-like" />
                   </button>
                 </div>
                 <div className="shop-list-compare ml-10">
@@ -306,18 +306,6 @@ const ProductGridListSingle: React.FC<ProductGridListSingleProps> = ({
           </div>
         </div>
       </div>
-      {/* product modal */}
-      <ProductModal
-        show={modalShow}
-        onHide={() => setModalShow(false)}
-        product={product}
-        currency={currency}
-        discountedPrice={finalDiscountedPrice}
-        finalProductPrice={finalProductPrice}
-        wishlistItem={wishlistItem}
-        compareItem={compareItem}
-        finalDiscountedPrice={finalDiscountedPrice}
-      />
     </Fragment>
   );
 };
