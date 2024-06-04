@@ -13,7 +13,7 @@ const ProductTabLeft = lazy(() =>
 
 const Product = lazy(() => import("./pages/shop-product/Product"));
 const Cart = lazy(() => import("./pages/other/Cart"));
-const Checkout = lazy(() => import("./pages/other/Checkout"));
+const Checkout = lazy(() => import("./pages/other/Checkout/Checkout"));
 const Wishlist = lazy(() => import("./pages/other/Wishlist"));
 
 const About = lazy(() => import("./pages/other/About"));

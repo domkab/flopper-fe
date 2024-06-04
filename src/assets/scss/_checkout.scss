@@ -1,131 +1,168 @@
 /*------- 21. Checkout page  -----------*/
 
+.css-art2ul-ValueContainer2 {
+  height: 45px;
+}
+
+.css-1u9des2-indicatorSeparator {
+  height: 25px;
+  align-self: center;
+}
+
+.css-4xgw5l-IndicatorsContainer2 {
+  height: 45px;
+  align-items: center;
+}
+
+// select indicator container
+
+.css-1xc3v61-indicatorContainer {
+  margin-right: 0;
+}
+
+// inner input
+
+.css-w9q2zk-Input2 {
+  height: 45px;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
 .billing-info-wrap {
   h3 {
     font-size: 20px;
     font-weight: 500;
-
     margin: 0 0 20px;
-
     color: #000;
   }
+
   .billing-info,
   .billing-select {
     label {
       margin: 0 0 7px;
-
       color: #000;
     }
+
     input {
       font-size: 14px;
-
       padding-right: 10px;
       padding-left: 20px;
-
       color: #333;
-      border: 1px solid #e6e6e6;
+      border: 1px solid hsl(0, 0%, 80%);
+      border-radius: 4px;
+      // border: 1px solid ;
       background: transparent none repeat scroll 0 0;
     }
+
     input.billing-address {
       margin-bottom: 10px;
     }
   }
+
   .billing-select {
     select {
       font-size: 14px;
-
       height: 45px;
       padding: 2px 20px;
-
-//background: rgba(0, 0, 0, 0) url("../../assets/img/icon-img/select.png") no-repeat scroll right 18px center;
-
+      // background: rgba(0, 0, 0, 0) url("../../assets/img/icon-img/select.png") no-repeat scroll right 18px center;
       cursor: pointer;
-
       color: #333;
       border: 1px solid #e6e6e6;
-
       -webkit-appearance: none;
-         -moz-appearance: none;
+      -moz-appearance: none;
     }
   }
+
   .checkout-account {
     display: flex;
     align-items: center;
+
     input {
       display: inline-block;
       float: left;
-
       width: 10px;
       height: 10px;
-
       border: 1px solid #9fa0a2;
     }
+
     span {
       font-weight: 400;
-
       margin: 0 0 0 12px;
-
       color: #333;
     }
   }
+
   .checkout-account-toggle {
     input {
       font-size: 14px;
-
       margin: 0 0 20px;
       padding-right: 10px;
       padding-left: 20px;
-
       color: #333;
       border: 1px solid #e6e6e6;
       background: transparent none repeat scroll 0 0;
     }
+
     button.checkout-btn {
       font-weight: 500;
-
       z-index: 9;
-
       padding: 10px 30px;
-
       cursor: pointer;
       text-transform: uppercase;
-
       color: #fff;
       border: medium none;
       border-radius: 50px;
       background-color: $theme-color;
+
       &:hover {
         background-color: #333;
       }
     }
   }
+
   .additional-info-wrap {
     h4 {
       font-size: 16px;
       font-weight: 500;
     }
+
     .additional-info {
       label {
         font-size: 14px;
-
         margin: 0 0 7px;
-
         color: #333;
       }
+
       textarea {
         font-size: 14px;
-
         height: 138px;
         padding: 17px 20px;
-
         color: #333;
         border: 1px solid #e6e6e6;
         background: transparent none repeat scroll 0 0;
       }
     }
   }
+
   .different-address {
     display: none;
+  }
+
+  @media (max-width: 900px) {
+    .row {
+      display: flex;
+      flex-wrap: wrap;
+
+      .billing-info-mjoin {
+        width: 50% !important;
+      }
+
+      .col-lg-6,
+      .col-md-6,
+      .col-12 {
+        width: 100%;
+      }
+    }
   }
 }
 
