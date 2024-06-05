@@ -21,6 +21,7 @@
     "react": "^18.2.0",
     "react-bootstrap": "^2.10.2",
     "react-countup": "^6.5.3",
+    "react-credit-cards": "^0.8.3",
     "react-dom": "^18.2.0",
     "react-helmet-async": "^2.0.4",
     "react-hooks-paginator": "^0.5.1",
@@ -39,7 +40,9 @@
     "yet-another-react-lightbox": "^2.6.2"
   },
   "devDependencies": {
+    "@types/payment": "^2.1.7",
     "@types/react": "^18.2.78",
+    "@types/react-credit-cards": "^0.8.4",
     "@types/react-dom": "^18.2.25",
     "@types/react-mailchimp-subscribe": "^2.1.4",
     "@types/swiper": "^6.0.0",

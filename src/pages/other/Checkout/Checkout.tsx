@@ -11,6 +11,7 @@ import { allCountries } from 'country-region-data';
 import { fetchUserCountry } from '../../../services/locationService';
 import { handleCountryChange } from '../../../services/countryService';
 import useWindowSize from '../../../hooks/useWindowSize';
+import CreditCardForm from './CreditCardForm';
 
 interface OptionType {
   label: string;
@@ -75,6 +76,7 @@ const Checkout: React.FC = () => {
                   <div className="billing-info-wrap">
                     <h3>Billing Details</h3>
                     <div className="row">
+
                       <div className="col-lg-6 col-md-6 col-12 billing-info-mjoin">
                         <div className="billing-info mb-20">
                           <label>First Name</label>
@@ -179,6 +181,12 @@ const Checkout: React.FC = () => {
                       )}
                     </div>
                   </div>
+                  <div className="billing-info-wrap">
+                    <h3>Credit Card Info</h3>
+                    <div className="row">
+                      <CreditCardForm />
+                    </div>
+                  </div>
                 </div>
 
                 <div className="col-lg-5">
@@ -248,7 +256,6 @@ const Checkout: React.FC = () => {
                         </div>
                       </div>
                       <div className="payment-method">
-                        ddd
                       </div>
                     </div>
                     <div className="place-order mt-25">
