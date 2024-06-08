@@ -1,7 +1,5 @@
 import React, { useEffect, useRef } from "react";
-import { useForm, Controller } from "react-hook-form";
-import * as Yup from "yup";
-import { yupResolver } from "@hookform/resolvers/yup";
+import { Controller, useFormContext } from "react-hook-form";
 import Select, { SingleValue } from "react-select";
 import { allCountries } from "country-region-data";
 import { fetchUserCountry } from "../../../services/locationService";
@@ -34,48 +32,21 @@ interface BillingInfoProps {
   setRegions: (regions: OptionType[]) => void;
 }
 
-const validationSchema = Yup.object().shape({
-  firstName: Yup.string().required('First Name is required'),
-  lastName: Yup.string().required('Last Name is required'),
-  email: Yup.string().email('Invalid email format').required('Email is required'),
-  phone: Yup.string().required('Phone is required'),
-  streetAddress: Yup.string().required('Street Address is required'),
-  city: Yup.string().required('Town / City is required'),
-  postcode: Yup.string().required('Postcode / ZIP is required'),
-  country: Yup.mixed<OptionType>().required('Country is required').nullable(),
-  region: Yup.mixed<OptionType>().required('State / County is required').nullable()
-});
-
 const BillingInfo: React.FC<BillingInfoProps> = ({
   selectedCountry,
   setSelectedCountry,
   selectedRegion,
   setSelectedRegion,
   regions,
-  setRegions
+  setRegions,
 }) => {
   const { width } = useWindowSize();
   const isMobile = width < 768;
   const stateInputRef = useRef<HTMLInputElement>(null);
-
-  const { control, setValue, trigger, formState: { errors } } = useForm<BillingInfoFormValues>({
-    resolver: yupResolver(validationSchema),
-    defaultValues: {
-      firstName: '',
-      lastName: '',
-      email: '',
-      phone: '',
-      country: selectedCountry,
-      region: selectedRegion,
-      streetAddress: '',
-      city: '',
-      postcode: ''
-    }
-  });
+  const { control, trigger, formState: { errors } } = useFormContext<BillingInfoFormValues>();
 
   const handleCountryChangeWrapper = (selectedOption: SingleValue<OptionType>) => {
     handleCountryChange(selectedOption, setSelectedCountry, setRegions, setSelectedRegion);
-    setValue('country', selectedOption);
   };
 
   const handleRegionChange = (selectedOption: SingleValue<OptionType>) => {
@@ -83,7 +54,6 @@ const BillingInfo: React.FC<BillingInfoProps> = ({
     if (stateInputRef.current && selectedOption) {
       stateInputRef.current.value = selectedOption.label;
     }
-    setValue('region', selectedOption);
   };
 
   useEffect(() => {
@@ -332,17 +302,3 @@ const BillingInfo: React.FC<BillingInfoProps> = ({
 };
 
 export default BillingInfo;
-
-
-
-// const validationSchema = Yup.object().shape({
-//   firstName: Yup.string().required('First Name is required'),
-//   lastName: Yup.string().required('Last Name is required'),
-//   email: Yup.string().email('Invalid email format').required('Email is required'),
-//   phone: Yup.string().required('Phone is required'),
-//   streetAddress: Yup.string().required('Street Address is required'),
-//   city: Yup.string().required('Town / City is required'),
-//   postcode: Yup.string().required('Postcode / ZIP is required'),
-//   country: Yup.mixed<OptionType>().required('Country is required').nullable(),
-//   region: Yup.string().required('State / County is required'),
-// });
