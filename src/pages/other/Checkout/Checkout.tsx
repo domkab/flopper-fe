@@ -6,13 +6,11 @@ import SEO from "../../../components/seo";
 import LayoutOne from "../../../layouts/LayoutOne";
 import Breadcrumb from "../../../wrappers/breadcrumb/Breadcrumb";
 import { RootState } from '../../../types/RootStateTypes';
-import Select, { SingleValue } from 'react-select';
-import { allCountries } from 'country-region-data';
+import { SingleValue } from 'react-select';
 import { fetchUserCountry } from '../../../services/locationService';
-import { handleCountryChange } from '../../../services/countryService';
 import useWindowSize from '../../../hooks/useWindowSize';
 import CreditCardForm from './CreditCardForm';
-
+import BillingInfo from './BillingInfo';
 interface OptionType {
   label: string;
   value: string;
@@ -33,17 +31,6 @@ const Checkout: React.FC = () => {
   const [selectedRegion, setSelectedRegion] = useState<SingleValue<OptionType>>(null);
   const [regions, setRegions] = useState<OptionType[]>([]);
   const stateInputRef = useRef<HTMLInputElement>(null);
-
-  const handleCountryChangeWrapper = (selectedOption: SingleValue<OptionType>) => {
-    handleCountryChange(selectedOption, setSelectedCountry, setRegions, setSelectedRegion);
-  };
-
-  const handleRegionChange = (selectedOption: SingleValue<OptionType>) => {
-    setSelectedRegion(selectedOption);
-    if (stateInputRef.current && selectedOption) {
-      stateInputRef.current.value = selectedOption.label;
-    }
-  };
 
   useEffect(() => {
     if (selectedRegion && stateInputRef.current) {
@@ -73,119 +60,17 @@ const Checkout: React.FC = () => {
             {cartItems && cartItems.length >= 1 ? (
               <div className="row">
                 <div className="col-lg-7">
+                  <BillingInfo
+                    selectedCountry={selectedCountry}
+                    setSelectedCountry={setSelectedCountry}
+                    selectedRegion={selectedRegion}
+                    setSelectedRegion={setSelectedRegion}
+                    regions={regions}
+                    setRegions={setRegions}
+                  />
                   <div className="billing-info-wrap">
-                    <h3>Billing Details</h3>
-                    <div className="row">
-
-                      <div className="col-lg-6 col-md-6 col-12 billing-info-mjoin">
-                        <div className="billing-info mb-20">
-                          <label>First Name</label>
-                          <input type="text" />
-                        </div>
-                      </div>
-                      <div className="col-lg-6 col-md-6 col-12 billing-info-mjoin">
-                        <div className="billing-info mb-20">
-                          <label>Last Name</label>
-                          <input type="text" />
-                        </div>
-                      </div>
-                      <div className="col-lg-12 col-md-12 col-12">
-                        <div className="billing-info mb-20">
-                          <label>Email Address</label>
-                          <input type="text" />
-                        </div>
-                      </div>
-                      <div className="col-lg-12 col-md-12 col-12">
-                        <div className="billing-info mb-20">
-                          <label>Phone</label>
-                          <input type="number" />
-                        </div>
-                      </div>
-                      <div className="col-lg-6 col-md-6 col-12">
-                        <div className="billing-info mb-20">
-                          <label>Country</label>
-                          <Select
-                            options={allCountries.map((country) => ({ label: country[0], value: country[1] }))}
-                            value={selectedCountry}
-                            onChange={handleCountryChangeWrapper}
-                          />
-                        </div>
-                      </div>
-                      <div className="col-lg-6 col-md-6 col-12 ">
-                        <div className="billing-info mb-20">
-                          <label>State / County</label>
-                          <input
-                            type="text"
-                            ref={stateInputRef}
-                            style={{ display: 'none' }}
-                            autoComplete="address-level1"
-                          />
-                          <Select
-                            options={regions}
-                            value={selectedRegion}
-                            onChange={handleRegionChange}
-                            isDisabled={!regions.length}
-                          />
-                        </div>
-                      </div>
-
-                      {isMobile ? (
-                        <>
-                          <div className="col-lg-4 col-md-3 col-12">
-                            <div className="billing-info mb-20">
-                              <label>Street Address</label>
-                              <input
-                                className="billing-address"
-                                placeholder="House number and street name"
-                                type="text"
-                              />
-                            </div>
-                          </div>
-                          <div className="col-lg-4 col-md-3 col-12 billing-info-mjoin">
-                            <div className="billing-info mb-20">
-                              <label>Town / City</label>
-                              <input type="text" />
-                            </div>
-                          </div>
-                          <div className="col-lg-4 col-md-3 col-12 billing-info-mjoin">
-                            <div className="billing-info mb-20">
-                              <label>Postcode / ZIP</label>
-                              <input type="text" />
-                            </div>
-                          </div>
-                        </>
-                      ) : (
-                        <>
-                          <div className="col-lg-4 col-md-3 col-12 billing-info-mjoin">
-                            <div className="billing-info mb-20">
-                              <label>Town / City</label>
-                              <input type="text" />
-                            </div>
-                          </div>
-                          <div className="col-lg-4 col-md-3 col-12">
-                            <div className="billing-info mb-20">
-                              <label>Address</label>
-                              <input
-                                className="billing-address"
-                                type="text"
-                              />
-                            </div>
-                          </div>
-                          <div className="col-lg-4 col-md-3 col-12 billing-info-mjoin">
-                            <div className="billing-info mb-20">
-                              <label>Postcode / ZIP</label>
-                              <input type="text" />
-                            </div>
-                          </div>
-                        </>
-                      )}
-                    </div>
-                  </div>
-                  <div className="billing-info-wrap">
-                    <h3>Credit Card Info</h3>
-                    <div className="row">
-                      <CreditCardForm />
-                    </div>
+                    <h3>Payment Info</h3>
+                    <CreditCardForm />
                   </div>
                 </div>
 

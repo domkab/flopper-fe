@@ -1,5 +1,9 @@
 /*------- 21. Checkout page  -----------*/
 
+/* #region react select input */
+
+// react select inputs
+
 .css-art2ul-ValueContainer2 {
   height: 45px;
 }
@@ -26,6 +30,16 @@
   height: 45px;
   margin: 0 !important;
   padding: 0 !important;
+}
+
+/* #endregion */
+.billing-info {
+  &__error {
+    color: red;
+    font-size: 0.9em;
+    margin-top: 5px;
+    line-height: 18px;
+  }
 }
 
 .billing-info-wrap {

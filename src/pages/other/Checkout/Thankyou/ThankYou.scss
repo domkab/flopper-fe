@@ -1,0 +1,125 @@
+.woolentor-page-template {
+  margin: 0 auto;
+  max-width: 1140px;
+  padding: 0 15px;
+
+  .woolentor {
+    &.woocommerce {
+      &.woocommerce-order {
+        .wp-block-spacer {
+          height: 100px;
+        }
+
+        .woocommerce-notice {
+          &.woocommerce-notice--success {
+            background-color: #f7f7f7;
+            border: 1px solid #d1d1d1;
+            padding: 20px;
+            font-size: 16px;
+            font-weight: bold;
+            color: #3c763d;
+            border-radius: 4px;
+            text-align: center;
+          }
+        }
+
+        .woocommerce-order-overview {
+          &.woocommerce-thankyou-order-details {
+            &.order_details {
+              list-style: none;
+              padding: 0;
+              margin: 20px 0;
+              display: flex;
+              justify-content: space-between;
+              font-size: 16px;
+
+              li {
+                margin-bottom: 10px;
+
+                &.woocommerce-order-overview__order,
+                &.woocommerce-order-overview__date,
+                &.woocommerce-order-overview__total,
+                &.woocommerce-order-overview__payment-method {
+                  display: flex;
+                  justify-content: space-between;
+                  width: 22%;
+
+                  strong {
+                    font-weight: bold;
+                    margin-left: 5px;
+                  }
+                }
+              }
+            }
+          }
+        }
+
+        .woocommerce-thankyou-order-payment-info-message {
+          p {
+            font-size: 16px;
+            color: #333;
+            text-align: center;
+          }
+        }
+
+        .woocommerce-order-details {
+          border: 1px solid #d1d1d1;
+          border-radius: 4px;
+          padding: 20px;
+          margin-top: 20px;
+
+          &__title {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #e1e1e1;
+            padding-bottom: 10px;
+          }
+
+          .shop_table {
+            width: 100%;
+            border-collapse: collapse;
+
+            thead {
+              tr {
+                th {
+                  background-color: #f7f7f7;
+                  border-bottom: 2px solid #e1e1e1;
+                  padding: 10px;
+                  text-align: left;
+                  font-size: 16px;
+                  font-weight: bold;
+                }
+              }
+            }
+
+            tbody {
+              tr {
+                td {
+                  border-bottom: 1px solid #e1e1e1;
+                  padding: 10px;
+                  font-size: 16px;
+                }
+              }
+            }
+
+            tfoot {
+              tr {
+                th,
+                td {
+                  padding: 10px;
+                  font-size: 16px;
+                  text-align: left;
+                }
+
+                th {
+                  text-align: right;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

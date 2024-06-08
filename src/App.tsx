@@ -19,6 +19,7 @@ const Wishlist = lazy(() => import("./pages/other/Wishlist"));
 const About = lazy(() => import("./pages/other/About"));
 const Contact = lazy(() => import("./pages/other/Contact"));
 const NotFound = lazy(() => import("./pages/other/NotFound"));
+const ThankYou = lazy(() => import("./pages/other/Checkout/Thankyou/ThankYou"));
 
 const App: React.FC = () => {
   return (
@@ -75,6 +76,11 @@ const App: React.FC = () => {
             <Route
               path={import.meta.env.VITE_PUBLIC_URL + "/contact"}
               element={<Contact />}
+            />
+
+            <Route
+              path={import.meta.env.VITE_PUBLIC_URL + "/thankyou"}
+              element={<ThankYou />}
             />
 
             <Route path="*" element={<NotFound />} />

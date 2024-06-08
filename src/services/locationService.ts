@@ -11,8 +11,11 @@ export const fetchUserCountry = async (
   setRegions: (regions: OptionType[]) => void
 ) => {
   try {
-    const response = await axios.get('https://geolocation-db.com/json/');
-    const countryCode = response.data.country_code;
+    const response = await axios.get('https://ipapi.co/json/');
+    const countryCode = response.data.country;
+    const ipAddress = response.data.ip;
+    console.log("User's IP Address:", ipAddress);
+
     const countryData = allCountries.find((country) => country[1] === countryCode);
     if (countryData) {
       setSelectedCountry({ label: countryData[0], value: countryData[1] });

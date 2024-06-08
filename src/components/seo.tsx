@@ -8,9 +8,9 @@ interface SEOProps {
 }
 
 const SEO: React.FC<SEOProps> = ({
-  title = "Flone",
+  title = "FlipFlopper",
   titleTemplate = "Product Page",
-  description = "Product page of Flone react minimalist eCommerce template.",
+  description = "Product page of FlipFlopper Shop commerce store.",
 }) => {
   return (
     <HelmetProvider>
