@@ -7,13 +7,13 @@ import LayoutOne from "../../../layouts/LayoutOne";
 import Breadcrumb from "../../../wrappers/breadcrumb/Breadcrumb";
 import { RootState } from '../../../types/RootStateTypes';
 import { SingleValue } from 'react-select';
-import { fetchUserCountry } from '../../../services/locationService';
 import useWindowSize from '../../../hooks/useWindowSize';
 import CreditCardForm from './CreditCardForm';
 import BillingInfo from './BillingInfo';
 import { useForm, FormProvider } from "react-hook-form";
 import * as Yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { fetchUserCountry } from '../../../services/locationService';
 
 interface OptionType {
   label: string;
@@ -28,8 +28,8 @@ const validationSchema = Yup.object().shape({
   streetAddress: Yup.string().required('Street Address is required'),
   city: Yup.string().required('Town / City is required'),
   postcode: Yup.string().required('Postcode / ZIP is required'),
-  country: Yup.mixed<OptionType>().required('Country is required').nullable(),
-  region: Yup.mixed<OptionType>().required('State / County is required').nullable(),
+  country: Yup.object<OptionType>().required('Country is required'),
+  region: Yup.object<OptionType>().required('State / County is required'),
   number: Yup.string().required('Card number is required'),
   name: Yup.string().required('Name is required'),
   expiry: Yup.string().required('Expiration date is required'),
@@ -39,7 +39,6 @@ const validationSchema = Yup.object().shape({
 const Checkout: React.FC = () => {
   const { width } = useWindowSize();
   const isMobile = width < 768;
-  console.log(width);
 
   let cartTotalPrice = 0;
 
@@ -47,8 +46,8 @@ const Checkout: React.FC = () => {
   const currency = useSelector((state: RootState) => state.currency);
   const { cartItems } = useSelector((state: RootState) => state.cart);
 
-  const [selectedCountry, setSelectedCountry] = useState<SingleValue<OptionType>>(null);
-  const [selectedRegion, setSelectedRegion] = useState<SingleValue<OptionType>>(null);
+  const [selectedCountry, setSelectedCountry] = useState<OptionType | null>(null);
+  const [selectedRegion, setSelectedRegion] = useState<OptionType | null>(null);
   const [regions, setRegions] = useState<OptionType[]>([]);
   const stateInputRef = useRef<HTMLInputElement>(null);
 
@@ -59,7 +58,7 @@ const Checkout: React.FC = () => {
   }, [selectedRegion]);
 
   useEffect(() => {
-    fetchUserCountry(setSelectedCountry, setRegions);
+    // fetchUserCountry(setSelectedCountry);
   }, []);
 
   const methods = useForm({
@@ -69,8 +68,8 @@ const Checkout: React.FC = () => {
       lastName: '',
       email: '',
       phone: '',
-      country: selectedCountry,
-      region: selectedRegion,
+      country: undefined,
+      region: undefined,
       streetAddress: '',
       city: '',
       postcode: '',
@@ -220,3 +219,26 @@ const Checkout: React.FC = () => {
 };
 
 export default Checkout;
+
+
+// const validationSchema = Yup.object().shape({
+//   firstName: Yup.string().required('First Name is required'),
+//   lastName: Yup.string().required('Last Name is required'),
+//   email: Yup.string().email('Invalid email format').required('Email is required'),
+//   phone: Yup.string().required('Phone is required'),
+//   streetAddress: Yup.string().required('Street Address is required'),
+//   city: Yup.string().required('Town / City is required'),
+//   postcode: Yup.string().required('Postcode / ZIP is required'),
+//   country: Yup.object().shape({
+//     label: Yup.string().required(),
+//     value: Yup.string().required()
+//   }).required('Country is required'),
+//   region: Yup.object().shape({
+//     label: Yup.string().required(),
+//     value: Yup.string().required()
+//   }).required('State / County is required'),
+//   number: Yup.string().required('Card number is required'),
+//   name: Yup.string().required('Name is required'),
+//   expiry: Yup.string().required('Expiration date is required'),
+//   cvc: Yup.string().required('CVC is required')
+// });

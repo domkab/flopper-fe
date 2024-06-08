@@ -2,7 +2,6 @@ import React, { useEffect, useRef } from "react";
 import { Controller, useFormContext } from "react-hook-form";
 import Select, { SingleValue } from "react-select";
 import { allCountries } from "country-region-data";
-import { fetchUserCountry } from "../../../services/locationService";
 import { handleCountryChange } from "../../../services/countryService";
 import useWindowSize from "../../../hooks/useWindowSize";
 
@@ -46,7 +45,22 @@ const BillingInfo: React.FC<BillingInfoProps> = ({
   const { control, trigger, formState: { errors } } = useFormContext<BillingInfoFormValues>();
 
   const handleCountryChangeWrapper = (selectedOption: SingleValue<OptionType>) => {
-    handleCountryChange(selectedOption, setSelectedCountry, setRegions, setSelectedRegion);
+    handleCountryChange(selectedOption, setSelectedCountry);
+    if (selectedOption) {
+      const countryData = allCountries.find(
+        (country) => country[1] === selectedOption.value
+      );
+      if (countryData) {
+        setRegions(countryData[2].map((region: [string, string]) => ({
+          label: region[0],
+          value: region[1],
+        })));
+      } else {
+        setRegions([]);
+      }
+    }
+    setSelectedRegion(null);
+    trigger('country');
   };
 
   const handleRegionChange = (selectedOption: SingleValue<OptionType>) => {
@@ -54,6 +68,7 @@ const BillingInfo: React.FC<BillingInfoProps> = ({
     if (stateInputRef.current && selectedOption) {
       stateInputRef.current.value = selectedOption.label;
     }
+    trigger('region');
   };
 
   useEffect(() => {
@@ -61,10 +76,6 @@ const BillingInfo: React.FC<BillingInfoProps> = ({
       stateInputRef.current.value = selectedRegion.label;
     }
   }, [selectedRegion]);
-
-  useEffect(() => {
-    fetchUserCountry(setSelectedCountry, setRegions);
-  }, []);
 
   return (
     <div className="billing-info-wrap">
@@ -76,6 +87,7 @@ const BillingInfo: React.FC<BillingInfoProps> = ({
             <Controller
               name="firstName"
               control={control}
+              rules={{ required: 'First Name is required' }}
               render={({ field }) => (
                 <input
                   {...field}
@@ -93,6 +105,7 @@ const BillingInfo: React.FC<BillingInfoProps> = ({
             <Controller
               name="lastName"
               control={control}
+              rules={{ required: 'Last Name is required' }}
               render={({ field }) => (
                 <input
                   {...field}
@@ -110,6 +123,7 @@ const BillingInfo: React.FC<BillingInfoProps> = ({
             <Controller
               name="email"
               control={control}
+              rules={{ required: 'Email is required' }}
               render={({ field }) => (
                 <input
                   {...field}
@@ -127,6 +141,7 @@ const BillingInfo: React.FC<BillingInfoProps> = ({
             <Controller
               name="phone"
               control={control}
+              rules={{ required: 'Phone is required' }}
               render={({ field }) => (
                 <input
                   {...field}
@@ -144,12 +159,16 @@ const BillingInfo: React.FC<BillingInfoProps> = ({
             <Controller
               name="country"
               control={control}
+              rules={{ required: 'Country is required' }}
               render={({ field }) => (
                 <Select
                   {...field}
                   options={allCountries.map((country) => ({ label: country[0], value: country[1] }))}
                   value={selectedCountry}
-                  onChange={handleCountryChangeWrapper}
+                  onChange={(option) => {
+                    handleCountryChangeWrapper(option);
+                    field.onChange(option);
+                  }}
                   onBlur={() => trigger('country')}
                   className={`billing-info__select ${errors.country ? 'error' : ''}`}
                 />
@@ -158,7 +177,7 @@ const BillingInfo: React.FC<BillingInfoProps> = ({
             {errors.country && <div className="billing-info__error">{errors.country?.message}</div>}
           </div>
         </div>
-        <div className="col-lg-6 col-md-6 col-12 ">
+        <div className="col-lg-6 col-md-6 col-12">
           <div className="billing-info mb-20">
             <label>State / County</label>
             <input
@@ -170,12 +189,16 @@ const BillingInfo: React.FC<BillingInfoProps> = ({
             <Controller
               name="region"
               control={control}
+              rules={{ required: 'State / County is required' }}
               render={({ field }) => (
                 <Select
                   {...field}
                   options={regions}
                   value={selectedRegion}
-                  onChange={handleRegionChange}
+                  onChange={(option) => {
+                    handleRegionChange(option);
+                    field.onChange(option);
+                  }}
                   isDisabled={!regions.length}
                   onBlur={() => trigger('region')}
                   className={`billing-info__select ${errors.region ? 'error' : ''}`}
@@ -194,6 +217,7 @@ const BillingInfo: React.FC<BillingInfoProps> = ({
                 <Controller
                   name="streetAddress"
                   control={control}
+                  rules={{ required: 'Street Address is required' }}
                   render={({ field }) => (
                     <input
                       {...field}
@@ -212,6 +236,7 @@ const BillingInfo: React.FC<BillingInfoProps> = ({
                 <Controller
                   name="city"
                   control={control}
+                  rules={{ required: 'Town / City is required' }}
                   render={({ field }) => (
                     <input
                       {...field}
@@ -229,6 +254,7 @@ const BillingInfo: React.FC<BillingInfoProps> = ({
                 <Controller
                   name="postcode"
                   control={control}
+                  rules={{ required: 'Postcode / ZIP is required' }}
                   render={({ field }) => (
                     <input
                       {...field}
@@ -249,6 +275,7 @@ const BillingInfo: React.FC<BillingInfoProps> = ({
                 <Controller
                   name="city"
                   control={control}
+                  rules={{ required: 'Town / City is required' }}
                   render={({ field }) => (
                     <input
                       {...field}
@@ -266,6 +293,7 @@ const BillingInfo: React.FC<BillingInfoProps> = ({
                 <Controller
                   name="streetAddress"
                   control={control}
+                  rules={{ required: 'Street Address is required' }}
                   render={({ field }) => (
                     <input
                       {...field}
@@ -283,6 +311,7 @@ const BillingInfo: React.FC<BillingInfoProps> = ({
                 <Controller
                   name="postcode"
                   control={control}
+                  rules={{ required: 'Postcode / ZIP is required' }}
                   render={({ field }) => (
                     <input
                       {...field}
