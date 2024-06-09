@@ -4,7 +4,7 @@ import Select, { SingleValue } from "react-select";
 import { allCountries } from "country-region-data";
 import { handleCountryChange } from "../../../services/countryService";
 import useWindowSize from "../../../hooks/useWindowSize";
-import { fetchUserCountry } from '../../../services/locationService';
+import './custom-select.scss'
 
 interface OptionType {
   label: string;
@@ -71,11 +71,6 @@ const BillingInfo: React.FC<BillingInfoProps> = ({
     }
     trigger('region');
   };
-
-  // useEffect(() => {
-  //  fetchUserCountry(setSelectedCountry);
-  //  console.log(selectedCountry, 'selected countr');
-  // }, []);
 
   useEffect(() => {
     if (selectedRegion && stateInputRef.current) {
@@ -274,7 +269,7 @@ const BillingInfo: React.FC<BillingInfoProps> = ({
           </>
         ) : (
           <>
-            <div className="col-lg-4 col-md-3 col-12 billing-info-mjoin">
+            <div className="col-lg-4 col-md-4 col-12 billing-info-mjoin">
               <div className="billing-info mb-20">
                 <label>Town / City</label>
                 <Controller
@@ -292,7 +287,7 @@ const BillingInfo: React.FC<BillingInfoProps> = ({
                 {errors.city && <div className="billing-info__error">{errors.city.message}</div>}
               </div>
             </div>
-            <div className="col-lg-4 col-md-3 col-12">
+            <div className="col-lg-4 col-md-4 col-12">
               <div className="billing-info mb-20">
                 <label>Address</label>
                 <Controller
@@ -310,7 +305,7 @@ const BillingInfo: React.FC<BillingInfoProps> = ({
                 {errors.streetAddress && <div className="billing-info__error">{errors.streetAddress.message}</div>}
               </div>
             </div>
-            <div className="col-lg-4 col-md-3 col-12 billing-info-mjoin">
+            <div className="col-lg-4 col-md-4 col-12 billing-info-mjoin">
               <div className="billing-info mb-20">
                 <label>Postcode / ZIP</label>
                 <Controller

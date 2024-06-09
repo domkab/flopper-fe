@@ -7,13 +7,13 @@ import LayoutOne from "../../../layouts/LayoutOne";
 import Breadcrumb from "../../../wrappers/breadcrumb/Breadcrumb";
 import { RootState } from '../../../types/RootStateTypes';
 import { SingleValue } from 'react-select';
-import useWindowSize from '../../../hooks/useWindowSize';
 import CreditCardForm from './CreditCardForm';
 import BillingInfo from './BillingInfo';
 import { useForm, FormProvider } from "react-hook-form";
 import * as Yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { fetchUserCountry } from '../../../services/locationService';
+import { allCountries } from 'country-region-data';
 
 interface OptionType {
   label: string;
@@ -37,9 +37,6 @@ const validationSchema = Yup.object().shape({
 });
 
 const Checkout: React.FC = () => {
-  const { width } = useWindowSize();
-  const isMobile = width < 768;
-
   let cartTotalPrice = 0;
 
   let { pathname } = useLocation();
@@ -50,19 +47,6 @@ const Checkout: React.FC = () => {
   const [selectedRegion, setSelectedRegion] = useState<OptionType | null>(null);
   const [regions, setRegions] = useState<OptionType[]>([]);
   const stateInputRef = useRef<HTMLInputElement>(null);
-
-  useEffect(() => {
-    if (selectedRegion && stateInputRef.current) {
-      stateInputRef.current.value = selectedRegion.label;
-    }
-  }, [selectedRegion]);
-
-  useEffect(() => {
-    const fetchCountry = async () => {
-      await fetchUserCountry(setSelectedCountry);
-    };
-    fetchCountry();
-  }, []);
 
   const methods = useForm({
     resolver: yupResolver(validationSchema),
@@ -82,6 +66,47 @@ const Checkout: React.FC = () => {
       cvc: ''
     }
   });
+
+  const { setValue, trigger, control, formState: { errors } } = methods;
+
+  const handleCountryChangeWrapper = (selectedOption: SingleValue<OptionType> | null) => {
+    setSelectedCountry(selectedOption);
+    setValue('country', selectedOption as OptionType);
+    if (selectedOption) {
+      const countryData = allCountries.find(
+        (country) => country[1] === selectedOption.value
+      );
+      if (countryData) {
+        setRegions(countryData[2].map((region: [string, string]) => ({
+          label: region[0],
+          value: region[1],
+        })));
+      } else {
+        setRegions([]);
+      }
+    }
+    setSelectedRegion(null);
+    trigger('country');
+  };
+
+  useEffect(() => {
+    const fetchCountry = async () => {
+      await fetchUserCountry(setSelectedCountry);
+    };
+    fetchCountry();
+  }, []);
+
+  useEffect(() => {
+    if (selectedCountry) {
+      handleCountryChangeWrapper(selectedCountry);
+    }
+  }, [selectedCountry]);
+
+  useEffect(() => {
+    if (selectedRegion && stateInputRef.current) {
+      stateInputRef.current.value = selectedRegion.label;
+    }
+  }, [selectedRegion]);
 
   const onSubmit = (data: any) => {
     console.log('Submitted Data:', data);
