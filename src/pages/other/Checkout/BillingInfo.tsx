@@ -4,6 +4,7 @@ import Select, { SingleValue } from "react-select";
 import { allCountries } from "country-region-data";
 import { handleCountryChange } from "../../../services/countryService";
 import useWindowSize from "../../../hooks/useWindowSize";
+import { fetchUserCountry } from '../../../services/locationService';
 
 interface OptionType {
   label: string;
@@ -70,6 +71,11 @@ const BillingInfo: React.FC<BillingInfoProps> = ({
     }
     trigger('region');
   };
+
+  // useEffect(() => {
+  //  fetchUserCountry(setSelectedCountry);
+  //  console.log(selectedCountry, 'selected countr');
+  // }, []);
 
   useEffect(() => {
     if (selectedRegion && stateInputRef.current) {
@@ -177,7 +183,7 @@ const BillingInfo: React.FC<BillingInfoProps> = ({
             {errors.country && <div className="billing-info__error">{errors.country?.message}</div>}
           </div>
         </div>
-        <div className="col-lg-6 col-md-6 col-12">
+        <div className="col-lg-6 col-md-6 col-12 ">
           <div className="billing-info mb-20">
             <label>State / County</label>
             <input
@@ -199,7 +205,6 @@ const BillingInfo: React.FC<BillingInfoProps> = ({
                     handleRegionChange(option);
                     field.onChange(option);
                   }}
-                  isDisabled={!regions.length}
                   onBlur={() => trigger('region')}
                   className={`billing-info__select ${errors.region ? 'error' : ''}`}
                 />
@@ -295,7 +300,7 @@ const BillingInfo: React.FC<BillingInfoProps> = ({
                   control={control}
                   rules={{ required: 'Street Address is required' }}
                   render={({ field }) => (
-                    <input
+                    <input 
                       {...field}
                       className={`billing-info__input ${errors.streetAddress ? 'error' : ''}`}
                       onBlur={() => trigger('streetAddress')}

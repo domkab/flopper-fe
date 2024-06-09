@@ -58,7 +58,10 @@ const Checkout: React.FC = () => {
   }, [selectedRegion]);
 
   useEffect(() => {
-    // fetchUserCountry(setSelectedCountry);
+    const fetchCountry = async () => {
+      await fetchUserCountry(setSelectedCountry);
+    };
+    fetchCountry();
   }, []);
 
   const methods = useForm({
@@ -219,26 +222,3 @@ const Checkout: React.FC = () => {
 };
 
 export default Checkout;
-
-
-// const validationSchema = Yup.object().shape({
-//   firstName: Yup.string().required('First Name is required'),
-//   lastName: Yup.string().required('Last Name is required'),
-//   email: Yup.string().email('Invalid email format').required('Email is required'),
-//   phone: Yup.string().required('Phone is required'),
-//   streetAddress: Yup.string().required('Street Address is required'),
-//   city: Yup.string().required('Town / City is required'),
-//   postcode: Yup.string().required('Postcode / ZIP is required'),
-//   country: Yup.object().shape({
-//     label: Yup.string().required(),
-//     value: Yup.string().required()
-//   }).required('Country is required'),
-//   region: Yup.object().shape({
-//     label: Yup.string().required(),
-//     value: Yup.string().required()
-//   }).required('State / County is required'),
-//   number: Yup.string().required('Card number is required'),
-//   name: Yup.string().required('Name is required'),
-//   expiry: Yup.string().required('Expiration date is required'),
-//   cvc: Yup.string().required('CVC is required')
-// });
