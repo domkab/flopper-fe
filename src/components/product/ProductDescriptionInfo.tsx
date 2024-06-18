@@ -2,11 +2,10 @@ import React, { Fragment, useState } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { getProductCartQuantity } from "../../helpers/product";
-// import Rating from "./sub-components/ProductRating";
 import { addToCart } from "../../store/slices/cart-slice";
 import { addToWishlist } from "../../store/slices/wishlist-slice";
-// import { addToCompare } from "../../store/slices/compare-slice";
 import { Product, CartItem, WishlistItem, CompareItem, Currency } from "../../types/RootStateTypes";
+import ShopifyButton from '../../pages/other/Checkout/ShopifyButton';
 
 interface ProductDescriptionInfoProps {
   product: Product;
@@ -47,6 +46,17 @@ const ProductDescriptionInfo: React.FC<ProductDescriptionInfoProps> = ({
     selectedProductSize
   );
 
+  const handleCartUpdate = (cartData: any) => {
+    // Synchronize your custom cart with Shopify's cart data
+    cartData.lineItems.forEach((item: any) => {
+      dispatch(addToCart({
+        id: item.variant_id,
+        product: item,
+        quantity: item.quantity,
+      }));
+    });
+  };
+
   return (
     <div className="product-details-content ml-70">
       <h2>{product.name}</h2>
@@ -62,15 +72,6 @@ const ProductDescriptionInfo: React.FC<ProductDescriptionInfoProps> = ({
           <span>{currency.currencySymbol + finalProductPrice} </span>
         )}
       </div>
-      {/* {product.rating && product.rating > 0 ? (
-        <div className="pro-details-rating-wrap">
-          <div className="pro-details-rating">
-            <Rating ratingValue={product.rating} />
-          </div>
-        </div>
-      ) : (
-        ""
-      )} */}
       <div className="pro-details-list">
         <p>{product.shortDescription}</p>
       </div>
@@ -80,38 +81,35 @@ const ProductDescriptionInfo: React.FC<ProductDescriptionInfoProps> = ({
           <div className="pro-details-color-wrap">
             <span>Color</span>
             <div className="pro-details-color-content">
-              {product.variation.map((single, key) => {
-                return (
-                  <label
-                    className={`pro-details-color-content--single ${single.color}`}
-                    key={key}
-                  >
-                    <input
-                      type="radio"
-                      value={single.color}
-                      name="product-color"
-                      checked={single.color === selectedProductColor}
-                      onChange={() => {
-                        setSelectedProductColor(single.color);
-                        setSelectedProductSize(single.size[0].name);
-                        setProductStock(single.size[0].stock);
-                        setQuantityCount(1);
-                      }}
-                    />
-                    <span className="checkmark"></span>
-                  </label>
-                );
-              })}
+              {product.variation.map((single, key) => (
+                <label
+                  className={`pro-details-color-content--single ${single.color}`}
+                  key={key}
+                >
+                  <input
+                    type="radio"
+                    value={single.color}
+                    name="product-color"
+                    checked={single.color === selectedProductColor}
+                    onChange={() => {
+                      setSelectedProductColor(single.color);
+                      setSelectedProductSize(single.size[0].name);
+                      setProductStock(single.size[0].stock);
+                      setQuantityCount(1);
+                    }}
+                  />
+                  <span className="checkmark"></span>
+                </label>
+              ))}
             </div>
           </div>
           <div className="pro-details-size">
             <span>Size</span>
             <div className="pro-details-size-content">
               {product.variation &&
-                product.variation.map((single, singleIndex) => {
-                  return single.color === selectedProductColor
-                    ? single.size.map((singleSize, key) => {
-                      return (
+                product.variation.map((single) =>
+                  single.color === selectedProductColor
+                    ? single.size.map((singleSize, key) => (
                         <label
                           className={`pro-details-size-content--single`}
                           key={key}
@@ -130,10 +128,9 @@ const ProductDescriptionInfo: React.FC<ProductDescriptionInfoProps> = ({
                           />
                           <span className="size-name">{singleSize.name}</span>
                         </label>
-                      );
-                    })
-                    : "";
-                })}
+                      ))
+                    : ""
+                )}
             </div>
           </div>
         </div>
@@ -181,7 +178,6 @@ const ProductDescriptionInfo: React.FC<ProductDescriptionInfoProps> = ({
             >
               +
             </button>
-
           </div>
           <div className="pro-details-cart btn-hover">
             {productStock && productStock > 0 ? (
@@ -190,19 +186,23 @@ const ProductDescriptionInfo: React.FC<ProductDescriptionInfoProps> = ({
                   dispatch(addToCart({
                     ...product,
                     quantity: quantityCount,
-                    selectedProductColor: selectedProductColor ? selectedProductColor : product.selectedProductColor ? product.selectedProductColor : null,
-                    selectedProductSize: selectedProductSize ? selectedProductSize : product.selectedProductSize ? product.selectedProductSize : null
+                    selectedProductColor: selectedProductColor || product.selectedProductColor,
+                    selectedProductSize: selectedProductSize || product.selectedProductSize
                   }))
                 }
                 disabled={productCartQty >= productStock}
               >
-                {" "}
-                Add To Cart{" "}
+                Add To Cart
               </button>
             ) : (
               <button disabled>Out of Stock</button>
             )}
           </div>
+          <ShopifyButton 
+            variant={selectedProductColor} 
+            size={selectedProductSize} 
+            onCartUpdate={handleCartUpdate} 
+          />
           <div className="pro-details-wishlist">
             <button
               className={wishlistItem !== undefined ? "active" : ""}
@@ -217,35 +217,19 @@ const ProductDescriptionInfo: React.FC<ProductDescriptionInfoProps> = ({
               <i className="pe-7s-like" />
             </button>
           </div>
-          {/* <div className="pro-details-compare">
-            <button
-              className={compareItem !== undefined ? "active" : ""}
-              disabled={compareItem !== undefined}
-              title={
-                compareItem !== undefined
-                  ? "Added to compare"
-                  : "Add to compare"
-              }
-              onClick={() => dispatch(addToCompare(product))}
-            >
-              <i className="pe-7s-shuffle" />
-            </button>
-          </div> */}
         </div>
       )}
       {product.category ? (
         <div className="pro-details-meta">
           <span>Categories :</span>
           <ul>
-            {product.category.map((single, key) => {
-              return (
-                <li key={key}>
-                  <Link to={"/shop-grid-standard"}>
-                    {single}
-                  </Link>
-                </li>
-              );
-            })}
+            {product.category.map((single, key) => (
+              <li key={key}>
+                <Link to={"/shop-grid-standard"}>
+                  {single}
+                </Link>
+              </li>
+            ))}
           </ul>
         </div>
       ) : (
@@ -255,47 +239,16 @@ const ProductDescriptionInfo: React.FC<ProductDescriptionInfoProps> = ({
         <div className="pro-details-meta">
           <span>Tags :</span>
           <ul>
-            {product.tag.map((single, key) => {
-              return (
-                <li key={key}>
-                  <Link to={"/shop-grid-standard"}>{single}</Link>
-                </li>
-              );
-            })}
+            {product.tag.map((single, key) => (
+              <li key={key}>
+                <Link to={"/shop-grid-standard"}>{single}</Link>
+              </li>
+            ))}
           </ul>
         </div>
       ) : (
         ""
       )}
-      {/* <div className="pro-details-social">
-        <ul>
-          <li>
-            <a href="//facebook.com">
-              <i className="fa fa-facebook" />
-            </a>
-          </li>
-          <li>
-            <a href="//dribbble.com">
-              <i className="fa fa-dribbble" />
-            </a>
-          </li>
-          <li>
-            <a href="//pinterest.com">
-              <i className="fa fa-pinterest-p" />
-            </a>
-          </li>
-          <li>
-            <a href="//twitter.com">
-              <i className="fa fa-twitter" />
-            </a>
-          </li>
-          <li>
-            <a href="//linkedin.com">
-              <i className="fa fa-linkedin" />
-            </a>
-          </li>
-        </ul>
-      </div> */}
     </div>
   );
 };

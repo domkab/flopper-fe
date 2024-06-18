@@ -661,6 +661,9 @@
               border: 1px solid #e28b37;
               background-color: #e28b37;
             }
+            &.light-violet {
+              border: 1px solid purple;
+            }
           }
         }
         &--single {
@@ -729,6 +732,14 @@
           &.brown {
             border: 1px solid brown;
             background-color: brown;
+          }
+          &.light-violet {
+            border: 1px solid purple;
+            background-color: purple;
+          }
+          &.pinkish {
+            border: 1px solid lightpink;
+            background-color: lightpink;
           }
           .checkmark {
             position: relative;

@@ -4,7 +4,7 @@ import { Link, useLocation } from "react-router-dom";
 import SEO from "../../components/seo";
 import { getDiscountPrice } from "../../helpers/product";
 import LayoutOne from "../../layouts/LayoutOne";
-import Breadcrumb from "../../wrappers/breadcrumb/Breadcrumb";
+// import Breadcrumb from "../../wrappers/breadcrumb/Breadcrumb";
 import { addToCart, decreaseQuantity, deleteFromCart, deleteAllFromCart } from "../../store/slices/cart-slice";
 import { cartItemStock } from "../../helpers/product";
 import { RootState, CartItem } from "../../types/RootStateTypes";
@@ -179,9 +179,10 @@ const Cart: React.FC = () => {
 
                                 <td className="product-remove">
                                   <button
-                                    onClick={() =>
-                                      dispatch(deleteFromCart(cartItem.id))
-                                    }
+                                    onClick={() => {
+                                      dispatch(deleteFromCart(cartItem.cartItemId));
+                                      console.log(cartItem.id);
+                                    }}
                                   >
                                     <i className="fa fa-times"></i>
                                   </button>

@@ -28,7 +28,7 @@ export const rootReducer = combineReducers({
   currency: currencyReducer,
   cart: cartReducer,
   compare: compareReducer,
-  wishlist: wishlistReducer
+  wishlist: wishlistReducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
@@ -52,3 +52,6 @@ export const store = configureStore({
 });
 
 export const persistor = persistStore(store);
+
+export type RootState = ReturnType<typeof store.getState>;
+export type AppDispatch = typeof store.dispatch;

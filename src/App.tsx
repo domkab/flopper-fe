@@ -82,7 +82,6 @@ const App: React.FC = () => {
               path={import.meta.env.VITE_PUBLIC_URL + "/thankyou"}
               element={<ThankYou />}
             />
-
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Suspense>
