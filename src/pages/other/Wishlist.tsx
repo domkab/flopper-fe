@@ -53,12 +53,12 @@ const Wishlist = () => {
                             console.log(wishlistItem, 'product');
 
                             const discountedPrice = getDiscountPrice(
-                              wishlistItem.price,
-                              wishlistItem.discount || 0
+                              wishlistItem.product.price,
+                              wishlistItem.product.discount || 0
                             );
 
                             const finalProductPrice = (
-                              wishlistItem.price * currency.currencyRate
+                              wishlistItem.product.price * currency.currencyRate
                             ).toFixed(2);
 
                             const finalDiscountedPrice = discountedPrice !== null
@@ -80,7 +80,7 @@ const Wishlist = () => {
                                       className="img-fluid"
                                       src={
                                         import.meta.env.VITE_PUBLIC_URL +
-                                        wishlistItem.image[0]
+                                        wishlistItem.product.image[0]
                                       }
                                       alt=""
                                     />
@@ -95,7 +95,7 @@ const Wishlist = () => {
                                       wishlistItem.id
                                     }
                                   >
-                                    {wishlistItem.name}
+                                    {wishlistItem.product.name}
                                   </Link>
                                 </td>
 
@@ -120,24 +120,24 @@ const Wishlist = () => {
                                 </td>
 
                                 <td className="product-wishlist-cart">
-                                  {wishlistItem.affiliateLink ? (
+                                  {wishlistItem.product.affiliateLink ? (
                                     <a
-                                      href={wishlistItem.affiliateLink}
+                                      href={wishlistItem.product.affiliateLink}
                                       rel="noopener noreferrer"
                                       target="_blank"
                                     >
                                       {" "}
                                       Buy now{" "}
                                     </a>
-                                  ) : wishlistItem.variation &&
-                                    wishlistItem.variation.length >= 1 ? (
+                                  ) : wishlistItem.product.variation &&
+                                    wishlistItem.product.variation.length >= 1 ? (
                                     <Link
                                       to={`${import.meta.env.VITE_PUBLIC_URL}/product/${wishlistItem.id}`}
                                     >
                                       Select option
                                     </Link>
-                                  ) : wishlistItem.stock &&
-                                    wishlistItem.stock > 0 ? (
+                                  ) : wishlistItem.product.stock &&
+                                    wishlistItem.product.stock > 0 ? (
                                     <button
                                       onClick={() =>
                                         dispatch(addToCart(wishlistItem))

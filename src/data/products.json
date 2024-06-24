@@ -9,23 +9,31 @@
     "new": false,
     "rating": 4,
     "saleCount": 54,
-    "category": ["fashion", "women"],
-    "tag": ["floppers", "women", "flippers", "summer"],
+    "category": [],
+    "tag": [ "flippers", "summer", "shark"],
     "variation": [
       {
         "color": "blue",
         "image": "/assets/img/product/fashion/1.jpg",
         "size": [
           {
-            "name": "s",
+            "name": "36-37",
             "stock": 3
           },
           {
-            "name": "m",
+            "name": "38-39",
             "stock": 2
           },
           {
-            "name": "l",
+            "name": "40-41",
+            "stock": 5
+          },
+          {
+            "name": "42-43",
+            "stock": 5
+          },
+          {
+            "name": "44-45",
             "stock": 5
           }
         ]

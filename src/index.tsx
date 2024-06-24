@@ -25,11 +25,17 @@ if (!rootElement) {
 // Create a root with React 18's new API
 const root = createRoot(rootElement);
 root.render(
-  <React.StrictMode>
-    <Provider store={store}>
-      <PersistGate loading={null} persistor={persistor}>
-        <App />
-      </PersistGate>
-    </Provider>
-  </React.StrictMode>
+  <Provider store={store}>
+    <PersistGate loading={null} persistor={persistor}>
+      <App />
+    </PersistGate>
+  </Provider>
+
+  // <React.StrictMode>
+  // <Provider store={store}>
+  //   <PersistGate loading={null} persistor={persistor}>
+  //     <App />
+  //   </PersistGate>
+  // </Provider>
+  // </React.StrictMode>
 );

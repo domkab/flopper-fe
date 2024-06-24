@@ -34,26 +34,18 @@ const ProductDescriptionTab: React.FC<ProductDescriptionTabProps> = ({
                 <div className="product-anotherinfo-wrapper">
                   <ul>
                     <li>
-                      <b>
-                        If your foot is thick or wide, we suggest to choose one size larger!
-                      </b>
+                      <span>Size</span> 400 g
                     </li>
                     <li>
-                      <span>36/37</span> Foot length 23.0cm (9.06 inch)
+                      <span>Dimensions</span>10 x 10 x 15 cm{" "}
                     </li>
                     <li>
-                      <span>38/39</span> Foot length 24.0cm (9.45 inch)
+                      <span>Materials</span> 60% cotton, 40% polyester
                     </li>
                     <li>
-                      <span>40/41</span> Foot length 25.0cm (9.84 inch)
+                      <span>Other Info</span> American heirloom jean shorts pug
+                      seitan letterpress
                     </li>
-                    <li>
-                      <span>42/43</span> Foot length 26.0cm (10.24 inch)
-                    </li>
-                    <li>
-                      <span>44/45</span> Foot length 27.0cm (10.63 inch)
-                    </li>
-
                   </ul>
                 </div>
               </Tab.Pane>

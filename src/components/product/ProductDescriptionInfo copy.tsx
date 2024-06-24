@@ -1,15 +1,11 @@
-import React, { Fragment, useEffect, useState } from "react";
+import React, { Fragment, useState, useRef } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { getProductCartQuantity } from "../../helpers/product";
 import { addToCart } from "../../store/slices/cart-slice";
 import { addToWishlist } from "../../store/slices/wishlist-slice";
 import { Product, CartItem, WishlistItem, CompareItem, Currency } from "../../types/RootStateTypes";
-import ShopifyBlueShark36_37 from '../../pages/other/Checkout/ShopifyButton/BlueShark/BlueShark36_37';
-import ShopifyBlueShark38_39 from '../../pages/other/Checkout/ShopifyButton/BlueShark/BlueShark38_39';
-import ShopifyBlueShark40_41 from '../../pages/other/Checkout/ShopifyButton/BlueShark/BlueShark40_41';
-import ShopifyBlueShark42_43 from '../../pages/other/Checkout/ShopifyButton/BlueShark/BlueShark42_43';
-import ShopifyBlueShark44_45 from '../../pages/other/Checkout/ShopifyButton/BlueShark/BlueShark44_45';
+import ShopifyButton from '../../pages/other/Checkout/ShopifyButton/ShopifySharkSmallBlue';
 
 interface ProductDescriptionInfoProps {
   product: Product;
@@ -42,6 +38,7 @@ const ProductDescriptionInfo: React.FC<ProductDescriptionInfoProps> = ({
     product.variation ? product.variation[0].size[0].stock : product.stock
   );
   const [quantityCount, setQuantityCount] = useState<number>(1);
+  const shopifyButtonRef = useRef<any>(null);
 
   const productCartQty = getProductCartQuantity(
     cartItems,
@@ -50,61 +47,34 @@ const ProductDescriptionInfo: React.FC<ProductDescriptionInfoProps> = ({
     selectedProductSize
   );
 
-  console.log(selectedProductSize);
-  
+  const handleAddToCart = () => {
+    const productData = {
+      ...product,
+      quantity: quantityCount,
+      selectedProductColor: selectedProductColor || product.selectedProductColor,
+      selectedProductSize: selectedProductSize || product.selectedProductSize,
+    };
 
-  // const handleAddToCart = () => {
-  //   const productData = {
-  //     ...product,
-  //     quantity: quantityCount,
-  //     selectedProductColor: selectedProductColor || product.selectedProductColor,
-  //     selectedProductSize: selectedProductSize || product.selectedProductSize,
-  //   };
+    dispatch(addToCart(productData));
 
-  //   dispatch(addToCart(productData));
-  // };
-
-  const getButtonId = (color: string, size: string) => {
-    return `product-component-${color}-${size}`;
-  };
-
-  const renderShopifyButton = () => {
-    if (product.tag.includes('shark')) {
-      if (selectedProductColor === 'blue' && selectedProductSize === '36-37') {
-        return <ShopifyBlueShark36_37 />;
-      }
-
-      if (selectedProductColor === 'blue' && selectedProductSize === '38-39') {
-        return <ShopifyBlueShark38_39 />;
-      }
-
-      if (selectedProductColor === 'blue' && selectedProductSize === '38-39') {
-        return <ShopifyBlueShark38_39 />;
-      }
-
-      if (selectedProductColor === 'blue' && selectedProductSize === '40-41') {
-        return <ShopifyBlueShark40_41 />;
-      }
-
-      if (selectedProductColor === 'blue' && selectedProductSize === '42-43') {
-        return <ShopifyBlueShark42_43 />;
-      }
-
-      if (selectedProductColor === 'blue' && selectedProductSize === '44-45') {
-        return <ShopifyBlueShark44_45 />;
-      }
-
-      // if (selectedProductColor === 'light-violet') {
-      //   return <ShopifySharkSmallLightViolet />;
-      // }
-      return null;
+    if (shopifyButtonRef.current) {
+      shopifyButtonRef.current.addToCart({
+        variant: selectedProductColor,
+        size: selectedProductSize,
+      });
     }
-
   };
 
-  useEffect(() => {
-    renderShopifyButton();
-  },[selectedProductColor, selectedProductSize])
+  const handleCartUpdate = (cartData: any) => {
+    // Synchronize your custom cart with Shopify's cart data
+    cartData.lineItems.forEach((item: any) => {
+      dispatch(addToCart({
+        id: item.variant_id,
+        product: item,
+        quantity: item.quantity,
+      }));
+    });
+  };
 
   return (
     <div className="product-details-content ml-70">
@@ -159,25 +129,25 @@ const ProductDescriptionInfo: React.FC<ProductDescriptionInfoProps> = ({
                 product.variation.map((single) =>
                   single.color === selectedProductColor
                     ? single.size.map((singleSize, key) => (
-                      <label
-                        className={`pro-details-size-content--single`}
-                        key={key}
-                      >
-                        <input
-                          type="radio"
-                          value={singleSize.name}
-                          checked={
-                            singleSize.name === selectedProductSize
-                          }
-                          onChange={() => {
-                            setSelectedProductSize(singleSize.name);
-                            setProductStock(singleSize.stock);
-                            setQuantityCount(1);
-                          }}
-                        />
-                        <span className="size-name">{singleSize.name}</span>
-                      </label>
-                    ))
+                        <label
+                          className={`pro-details-size-content--single`}
+                          key={key}
+                        >
+                          <input
+                            type="radio"
+                            value={singleSize.name}
+                            checked={
+                              singleSize.name === selectedProductSize
+                            }
+                            onChange={() => {
+                              setSelectedProductSize(singleSize.name);
+                              setProductStock(singleSize.stock);
+                              setQuantityCount(1);
+                            }}
+                          />
+                          <span className="size-name">{singleSize.name}</span>
+                        </label>
+                      ))
                     : ""
                 )}
             </div>
@@ -200,7 +170,7 @@ const ProductDescriptionInfo: React.FC<ProductDescriptionInfoProps> = ({
         </div>
       ) : (
         <div className="pro-details-quality">
-          {/* <div className="cart-plus-minus">
+          <div className="cart-plus-minus">
             <button
               onClick={() =>
                 setQuantityCount(quantityCount > 1 ? quantityCount - 1 : 1)
@@ -227,8 +197,8 @@ const ProductDescriptionInfo: React.FC<ProductDescriptionInfoProps> = ({
             >
               +
             </button>
-          </div> */}
-          {/* <div className="pro-details-cart btn-hover">
+          </div>
+          <div className="pro-details-cart btn-hover">
             {productStock && productStock > 0 ? (
               <button
                 onClick={handleAddToCart}
@@ -239,20 +209,8 @@ const ProductDescriptionInfo: React.FC<ProductDescriptionInfoProps> = ({
             ) : (
               <button disabled>Out of Stock</button>
             )}
-          </div> */}
-          <div className="pro-details-cart btn-hover">
-            {renderShopifyButton()}
           </div>
-
-          {product.variation && product.variation.map(single =>
-            single.color === selectedProductColor ?
-              single.size.map(singleSize => (
-                <div key={getButtonId(single.color, singleSize.name)} style={{ display: singleSize.name === selectedProductSize ? 'block' : 'none' }}>
-                </div>
-              )) : null
-          )}
-
-          {/* <div className="pro-details-wishlist">
+          <div className="pro-details-wishlist">
             <button
               className={wishlistItem !== undefined ? "active" : ""}
               disabled={wishlistItem !== undefined}
@@ -265,12 +223,12 @@ const ProductDescriptionInfo: React.FC<ProductDescriptionInfoProps> = ({
             >
               <i className="pe-7s-like" />
             </button>
-          </div> */}
+          </div>
         </div>
       )}
       {product.category ? (
         <div className="pro-details-meta">
-          {/* <span>Categories :</span> */}
+          <span>Categories :</span>
           <ul>
             {product.category.map((single, key) => (
               <li key={key}>
