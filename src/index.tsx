@@ -13,16 +13,13 @@ import "./assets/scss/style.scss";
 import products from "./data/products.json";
 import { setProducts } from "./store/slices/product-slice";
 
-// Set the initial products data in the store
 store.dispatch(setProducts(products));
 
-// Find the root element in the HTML
 const rootElement = document.getElementById("root");
 if (!rootElement) {
   throw new Error("Could not find root element");
 }
 
-// Create a root with React 18's new API
 const root = createRoot(rootElement);
 root.render(
   <Provider store={store}>

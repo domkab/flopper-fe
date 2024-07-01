@@ -10,6 +10,16 @@ import ShopifyBlueShark38_39 from '../../pages/other/Checkout/ShopifyButton/Blue
 import ShopifyBlueShark40_41 from '../../pages/other/Checkout/ShopifyButton/BlueShark/BlueShark40_41';
 import ShopifyBlueShark42_43 from '../../pages/other/Checkout/ShopifyButton/BlueShark/BlueShark42_43';
 import ShopifyBlueShark44_45 from '../../pages/other/Checkout/ShopifyButton/BlueShark/BlueShark44_45';
+import ShopifyOrangeShark36_37 from '../../pages/other/Checkout/ShopifyButton/OrangeShark/OrangeShark36_37';
+import ShopifyOrangeShark38_39 from '../../pages/other/Checkout/ShopifyButton/OrangeShark/OrangeShark38_39';
+import ShopifyOrangeShark40_41 from '../../pages/other/Checkout/ShopifyButton/OrangeShark/OrangeShark40_41';
+import ShopifyOrangeShark42_43 from '../../pages/other/Checkout/ShopifyButton/OrangeShark/OrangeShark42_43';
+import ShopifyOrangeShark44_45 from '../../pages/other/Checkout/ShopifyButton/OrangeShark/OrangeShark44_45';
+import ShopifyPurpleShark36_37 from '../../pages/other/Checkout/ShopifyButton/PurpleShark/PurpleShark36_37';
+import ShopifyPurpleShark38_39 from '../../pages/other/Checkout/ShopifyButton/PurpleShark/PurpleShark38_39';
+import ShopifyPurpleShark40_41 from '../../pages/other/Checkout/ShopifyButton/PurpleShark/PurpleShark40_41';
+import ShopifyPurpleShark42_43 from '../../pages/other/Checkout/ShopifyButton/PurpleShark/PurpleShark42_43';
+import ShopifyPurpleShark44_45 from '../../pages/other/Checkout/ShopifyButton/PurpleShark/PurpleShark44_45';
 
 interface ProductDescriptionInfoProps {
   product: Product;
@@ -51,7 +61,7 @@ const ProductDescriptionInfo: React.FC<ProductDescriptionInfoProps> = ({
   );
 
   console.log(selectedProductSize);
-  
+
 
   // const handleAddToCart = () => {
   //   const productData = {
@@ -70,6 +80,7 @@ const ProductDescriptionInfo: React.FC<ProductDescriptionInfoProps> = ({
 
   const renderShopifyButton = () => {
     if (product.tag.includes('shark')) {
+      // blue
       if (selectedProductColor === 'blue' && selectedProductSize === '36-37') {
         return <ShopifyBlueShark36_37 />;
       }
@@ -93,10 +104,47 @@ const ProductDescriptionInfo: React.FC<ProductDescriptionInfoProps> = ({
       if (selectedProductColor === 'blue' && selectedProductSize === '44-45') {
         return <ShopifyBlueShark44_45 />;
       }
+      // orange
+      if (selectedProductColor === 'orange' && selectedProductSize === '36-37') {
+        return <ShopifyOrangeShark36_37 />;
+      }
 
-      // if (selectedProductColor === 'light-violet') {
-      //   return <ShopifySharkSmallLightViolet />;
-      // }
+      if (selectedProductColor === 'orange' && selectedProductSize === '38-39') {
+        return <ShopifyOrangeShark38_39 />;
+      }
+
+      if (selectedProductColor === 'orange' && selectedProductSize === '40-41') {
+        return <ShopifyOrangeShark40_41 />;
+      }
+
+      if (selectedProductColor === 'orange' && selectedProductSize === '42-43') {
+        return <ShopifyOrangeShark42_43 />;
+      }
+
+      if (selectedProductColor === 'orange' && selectedProductSize === '44-45') {
+        return <ShopifyOrangeShark44_45 />;
+      }
+
+      if (selectedProductColor === 'purple' && selectedProductSize === '36-37') {
+        return <ShopifyPurpleShark36_37 />;
+      }
+
+      if (selectedProductColor === 'purple' && selectedProductSize === '38-39') {
+        return <ShopifyPurpleShark38_39 />;
+      }
+
+      if (selectedProductColor === 'purple' && selectedProductSize === '40-41') {
+        return <ShopifyPurpleShark40_41 />;
+      }
+
+      if (selectedProductColor === 'purple' && selectedProductSize === '42-43') {
+        return <ShopifyPurpleShark42_43 />;
+      }
+
+      if (selectedProductColor === 'purple' && selectedProductSize === '44-45') {
+        return <ShopifyPurpleShark44_45 />;
+      }
+
       return null;
     }
 
@@ -104,7 +152,7 @@ const ProductDescriptionInfo: React.FC<ProductDescriptionInfoProps> = ({
 
   useEffect(() => {
     renderShopifyButton();
-  },[selectedProductColor, selectedProductSize])
+  }, [selectedProductColor, selectedProductSize])
 
   return (
     <div className="product-details-content ml-70">

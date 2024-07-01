@@ -39,46 +39,54 @@
         ]
       },
       {
-        "color": "light-violet",
+        "color": "orange",
         "image": "/assets/img/product/fashion/8.jpg",
         "size": [
           {
-            "name": "x",
-            "stock": 4
+            "name": "36-37",
+            "stock": 3
           },
           {
-            "name": "m",
-            "stock": 7
+            "name": "38-39",
+            "stock": 2
           },
           {
-            "name": "xl",
-            "stock": 9
+            "name": "40-41",
+            "stock": 5
           },
           {
-            "name": "xxl",
-            "stock": 1
+            "name": "42-43",
+            "stock": 5
+          },
+          {
+            "name": "44-45",
+            "stock": 5
           }
         ]
       },
       {
-        "color": "pinkish",
+        "color": "purple",
         "image": "/assets/img/product/fashion/3.jpg",
         "size": [
           {
-            "name": "x",
-            "stock": 1
+            "name": "36-37",
+            "stock": 3
           },
           {
-            "name": "m",
+            "name": "38-39",
             "stock": 2
           },
           {
-            "name": "xl",
-            "stock": 4
+            "name": "40-41",
+            "stock": 5
           },
           {
-            "name": "xxl",
-            "stock": 0
+            "name": "42-43",
+            "stock": 5
+          },
+          {
+            "name": "44-45",
+            "stock": 5
           }
         ]
       }
@@ -103,7 +111,7 @@
     "rating": 3,
     "saleCount": 12,
     "category": ["fashion", "women"],
-    "tag": ["fashion", "women", "coat", "full sleeve"],
+    "tag": [ "flippers", "summer", "shark"],
     "variation": [
       {
         "color": "blue",
