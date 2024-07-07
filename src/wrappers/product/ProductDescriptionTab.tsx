@@ -1,6 +1,7 @@
 import clsx from "clsx";
 import Tab from "react-bootstrap/Tab";
 import Nav from "react-bootstrap/Nav";
+import React from 'react';
 
 interface ProductDescriptionTabProps {
   spaceBottomClass?: string;
@@ -11,6 +12,35 @@ const ProductDescriptionTab: React.FC<ProductDescriptionTabProps> = ({
   spaceBottomClass,
   productFullDesc
 }) => {
+
+  const renderFullDescription = () => {
+    if (!productFullDesc) return null;
+
+    const descriptionParts = productFullDesc.split("\n\n");
+    const keyFeatures = descriptionParts[0].split("\n");
+    const whyLoveParts = descriptionParts.slice(1).join("\n\n").split("\n");
+
+    return (
+      <div>
+        <h3>Key Features:</h3>
+        {keyFeatures.map((line, index) => (
+          <p key={index}>{line}</p>
+        ))}
+        <h3>Why You'll Love Shark Flops:</h3>
+        <ul>
+          {whyLoveParts.map((line, index) => {
+            const parts = line.split(": ");
+            return (
+              <li key={index} style={{ marginBottom: '10px' }}>
+                <strong>{parts[0]}</strong>{parts[1] ? `: ${parts[1]}` : ""}
+              </li>
+            );
+          })}
+        </ul>
+      </div>
+    );
+  };
+
   return (
     <div className={clsx("description-review-area", spaceBottomClass)}>
       <div className="container">
@@ -34,31 +64,23 @@ const ProductDescriptionTab: React.FC<ProductDescriptionTabProps> = ({
                 <div className="product-anotherinfo-wrapper">
                   <ul>
                     <li>
-                      <b>
-                        If your foot is thick or wide, we suggest to choose one size larger!
-                      </b>
+                      <span>Size</span> 400 g
                     </li>
                     <li>
-                      <span>36/37</span> Foot length 23.0cm (9.06 inch)
+                      <span>Dimensions</span>10 x 10 x 15 cm{" "}
                     </li>
                     <li>
-                      <span>38/39</span> Foot length 24.0cm (9.45 inch)
+                      <span>Materials</span> 60% cotton, 40% polyester
                     </li>
                     <li>
-                      <span>40/41</span> Foot length 25.0cm (9.84 inch)
+                      <span>Other Info</span> American heirloom jean shorts pug
+                      seitan letterpress
                     </li>
-                    <li>
-                      <span>42/43</span> Foot length 26.0cm (10.24 inch)
-                    </li>
-                    <li>
-                      <span>44/45</span> Foot length 27.0cm (10.63 inch)
-                    </li>
-
                   </ul>
                 </div>
               </Tab.Pane>
               <Tab.Pane eventKey="productDescription">
-                {productFullDesc}
+                {renderFullDescription()}
               </Tab.Pane>
               <Tab.Pane eventKey="productReviews">
                 <div className="row">

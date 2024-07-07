@@ -107,7 +107,7 @@ const ProductGridListSingle: React.FC<ProductGridListSingleProps> = ({
                 </button>
               )}
             </div>
-            <div className="pro-same-action pro-wishlist">
+            {/* <div className="pro-same-action pro-wishlist">
               <button
                 className={wishlistItem !== undefined ? "active" : ""}
                 disabled={wishlistItem !== undefined}
@@ -120,7 +120,7 @@ const ProductGridListSingle: React.FC<ProductGridListSingleProps> = ({
               >
                 <i className="pe-7s-like" />
               </button>
-            </div>
+            </div> */}
 
             {/* <div className="pro-same-action pro-quickview">
               <button onClick={() => setModalShow(true)} title="Quick View">

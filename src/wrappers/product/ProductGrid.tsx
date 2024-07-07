@@ -17,6 +17,7 @@ const ProductGrid: FC<ProductGridProps> = ({
   const { wishlistItems } = useSelector((state: RootState) => state.wishlist);
   const { compareItems } = useSelector((state: RootState) => state.compare);
   const prods = getProducts(products, category, type, limit);
+  console.log(prods);
 
   return (
     <Fragment>

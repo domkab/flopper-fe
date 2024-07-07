@@ -6,10 +6,10 @@
     "price": 12.45,
     "discount": 10,
     "offerEnd": "October 5, 2024 12:11:00",
-    "new": false,
+    "new": true,
     "rating": 4,
     "saleCount": 54,
-    "category": [],
+    "category": ["fashion"],
     "tag": [ "flippers", "summer", "shark"],
     "variation": [
       {
@@ -98,8 +98,8 @@
       "/assets/img/product/fashion/test/600x800.webp",
       "/assets/img/product/fashion/test/600x800.webp"
     ],
-    "shortDescription": "Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur.",
-    "fullDescription": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur? Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances occur in which toil and pain can procure him some great pleasure. To take a trivial example, which of us ever undertakes laborious physical exercise, except to obtain some advantage from it? But who has any right to find fault with a man who chooses to enjoy a pleasure that has no annoying consequences, or one who avoids a pain that produces no resultant pleasure?"
+    "shortDescription": "Dive into a world of comfort and fun with Shark Flops—where every step feels like a day at the beach! Order yours today and experience the perfect blend of style and relaxation.",
+    "fullDescription": "Upper Material: High-Quality EVA\nHeel Height: Medium (3cm-5cm)\nSeason: Perfect for Summer\nOutsole Material: Durable EVA\nInsole Material: Soft EVA for Maximum Comfort\n\n\n\nUnique Design: Make a splash with these shark-shaped slippers that bring a playful vibe to your indoor footwear collection.\n\nComfortable Fit: Crafted from premium EVA material, Shark Flops offer a cushioned feel that supports your feet all day long.\n\nPerfect for Summer: Lightweight and breathable, these slippers are ideal for keeping your feet cool and comfortable during the warm months.\n\nDurable Build: The sturdy EVA outsole ensures longevity and provides excellent grip on various indoor surfaces.\n\nVersatile Use: Whether you're lounging at home or stepping out to grab the mail, Shark Flops are your go-to choice for stylish indoor footwear."
   },
   {
     "id": "2",
@@ -110,7 +110,7 @@
     "new": false,
     "rating": 3,
     "saleCount": 12,
-    "category": ["fashion", "women"],
+    "category": ["women"],
     "tag": [ "flippers", "summer", "shark"],
     "variation": [
       {
@@ -197,7 +197,7 @@
     "new": true,
     "rating": 5,
     "saleCount": 36,
-    "category": ["fashion", "men"],
+    "category": ["men"],
     "tag": ["fashion", "men", "jacket", "full sleeve"],
     "stock": 1,
     "image": [
@@ -304,7 +304,7 @@
     "new": true,
     "rating": 5,
     "saleCount": 25,
-    "category": ["fashion", "women"],
+    "category": ["women"],
     "tag": ["fashion", "women", "coat", "full sleeve"],
     "variation": [
       {
@@ -390,7 +390,7 @@
     "new": true,
     "rating": 5,
     "saleCount": 65,
-    "category": ["fashion", "men"],
+    "category": ["men"],
     "tag": ["fashion"],
     "variation": [
       {
@@ -475,7 +475,7 @@
     "new": true,
     "rating": 5,
     "saleCount": 55,
-    "category": ["fashion", "women"],
+    "category": ["women"],
     "tag": ["fashion", "women", "coat", "full sleeve"],
     "variation": [
       {
@@ -561,7 +561,7 @@
     "new": false,
     "rating": 5,
     "saleCount": 83,
-    "category": ["fashion", "men"],
+    "category": [ "men"],
     "tag": ["fashion", "men", "jacket", "full sleeve"],
     "stock": 0,
     "image": [
@@ -583,7 +583,7 @@
     "new": false,
     "rating": 4,
     "saleCount": 95,
-    "category": ["fashion", "women"],
+    "category": ["women"],
     "tag": ["fashion", "women", "top", "sleeveless"],
     "stock": 5,
     "affiliateLink": "//www.amazon.com",
@@ -1069,7 +1069,7 @@
     "new": false,
     "rating": 4,
     "saleCount": 54,
-    "category": ["fashion", "kids"],
+    "category": ["kids"],
     "tag": ["fashion", "kids"],
     "variation": [
       {
@@ -1154,7 +1154,7 @@
     "new": false,
     "rating": 3,
     "saleCount": 12,
-    "category": ["fashion", "kids"],
+    "category": ["kids"],
     "tag": ["fashion", "kids"],
     "variation": [
       {
@@ -1241,7 +1241,7 @@
     "new": true,
     "rating": 5,
     "saleCount": 36,
-    "category": ["fashion", "kids"],
+    "category": [ "kids"],
     "tag": ["fashion", "kids"],
     "variation": [
       {
@@ -1326,7 +1326,7 @@
     "new": true,
     "rating": 4,
     "saleCount": 20,
-    "category": ["fashion", "kids"],
+    "category": ["kids"],
     "tag": ["fashion", "kids"],
     "variation": [
       {
@@ -1411,7 +1411,7 @@
     "new": true,
     "rating": 5,
     "saleCount": 25,
-    "category": ["fashion", "kids"],
+    "category": [ "kids"],
     "tag": ["fashion", "kids"],
     "variation": [
       {
@@ -1497,7 +1497,7 @@
     "new": true,
     "rating": 5,
     "saleCount": 65,
-    "category": ["fashion", "kids"],
+    "category": ["kids"],
     "tag": ["fashion", "kids"],
     "variation": [
       {
@@ -1582,7 +1582,7 @@
     "new": true,
     "rating": 5,
     "saleCount": 55,
-    "category": ["fashion", "kids"],
+    "category": [ "kids"],
     "tag": ["fashion", "kids"],
     "variation": [
       {
@@ -1668,7 +1668,7 @@
     "new": false,
     "rating": 5,
     "saleCount": 83,
-    "category": ["fashion", "kids"],
+    "category": [ "kids"],
     "tag": ["fashion", "kids"],
     "stock": 0,
     "image": [

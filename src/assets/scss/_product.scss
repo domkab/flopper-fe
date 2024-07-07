@@ -5,8 +5,7 @@
     &.three-column {
       .col-xl-3 {
         flex: 1 0 33.3333%;
-
-        max-width: 33.3333%;
+        max-width: 50%;
 
         transition: 0.5s;
 
@@ -51,6 +50,9 @@
           max-width: 100%;
         }
       }
+    }
+    &-homepage {
+      justify-content: space-around;
     }
   }
 
@@ -331,8 +333,7 @@
       }
       .pro-cart {
         font-size: 14px;
-
-        width: calc(100% - 48px);
+        width: 100%;
 
         transition-delay: 0.1s;
       }

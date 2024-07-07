@@ -38,7 +38,7 @@ const TabProductEight: React.FC<TabProductEightProps> = ({
             </Nav.Item>
           </Nav> */}
           <Tab.Content>
-            <Tab.Pane eventKey="newArrival">
+            {/* <Tab.Pane eventKey="newArrival">
               <div className="row">
                 <ProductGrid
                   category={category}
@@ -47,8 +47,8 @@ const TabProductEight: React.FC<TabProductEightProps> = ({
                   spaceBottomClass="mb-25"
                 />
               </div>
-            </Tab.Pane>
-            <Tab.Pane eventKey="bestSeller">
+            </Tab.Pane> */}
+            {/* <Tab.Pane eventKey="bestSeller">
               <div className="row">
                 <ProductGrid
                   category={category}
@@ -57,9 +57,9 @@ const TabProductEight: React.FC<TabProductEightProps> = ({
                   spaceBottomClass="mb-25"
                 />
               </div>
-            </Tab.Pane>
+            </Tab.Pane> */}
             <Tab.Pane eventKey="saleItems">
-              <div className="row">
+              <div className="row row-homepage">
                 <ProductGrid
                   category={category}
                   type="saleItems"

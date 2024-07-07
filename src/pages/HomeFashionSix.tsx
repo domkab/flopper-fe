@@ -18,7 +18,7 @@ const HomeFashionSix = () => {
         {/* hero slider */}
         <HeroSliderFourteen />
         {/* section title */}
-        <SectionTitleWithText spaceTopClass="pt-95" spaceBottomClass="pb-90" />
+        <SectionTitleWithText spaceTopClass="pt-95" spaceBottomClass="pb-50" />
         {/* tab product */}
         <TabProductEight
           spaceBottomClass="pb-70"

@@ -95,7 +95,7 @@ const ProductDescriptionInfo: React.FC<ProductDescriptionInfoProps> = ({
         <p>{product.shortDescription}</p>
       </div>
 
-      {product.variation ? (
+      {product.variation && (
         <div className="pro-details-size-color">
           <div className="pro-details-color-wrap">
             <span>Color</span>
@@ -148,13 +148,11 @@ const ProductDescriptionInfo: React.FC<ProductDescriptionInfoProps> = ({
                           <span className="size-name">{singleSize.name}</span>
                         </label>
                       ))
-                    : ""
+                    : null
                 )}
             </div>
           </div>
         </div>
-      ) : (
-        ""
       )}
       {product.affiliateLink ? (
         <div className="pro-details-quality">
@@ -226,23 +224,19 @@ const ProductDescriptionInfo: React.FC<ProductDescriptionInfoProps> = ({
           </div>
         </div>
       )}
-      {product.category ? (
+      {product.category && (
         <div className="pro-details-meta">
           <span>Categories :</span>
           <ul>
             {product.category.map((single, key) => (
               <li key={key}>
-                <Link to={"/shop-grid-standard"}>
-                  {single}
-                </Link>
+                <Link to={"/shop-grid-standard"}>{single}</Link>
               </li>
             ))}
           </ul>
         </div>
-      ) : (
-        ""
       )}
-      {product.tag ? (
+      {product.tag && (
         <div className="pro-details-meta">
           <span>Tags :</span>
           <ul>
@@ -253,8 +247,6 @@ const ProductDescriptionInfo: React.FC<ProductDescriptionInfoProps> = ({
             ))}
           </ul>
         </div>
-      ) : (
-        ""
       )}
     </div>
   );

@@ -147,7 +147,6 @@ const ProductDescriptionInfo: React.FC<ProductDescriptionInfoProps> = ({
 
       return null;
     }
-
   };
 
   useEffect(() => {
